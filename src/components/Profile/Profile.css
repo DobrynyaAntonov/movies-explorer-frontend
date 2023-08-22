@@ -1,0 +1,145 @@
+.Profile__container {
+    text-align: center;
+    margin-top: 89px;
+}
+
+.Profile__name {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+.Profile__input-name {
+    width: 141px;
+    height: 14px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: #FFF;
+}
+
+.Profile__input-name::placeholder {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.Profile__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 124px;
+}
+
+.Profile__name-box {
+    display: flex;
+    justify-content: space-between;
+    width: 32%;
+}
+
+.Profile__name-box:first-child {
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+    padding-bottom: 18px;
+}
+
+.Profile__name-name {
+    color: #FFF;
+    text-align: right;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+
+}
+
+.Profile__submit {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    border: none;
+    background: none;
+    margin-top: 220px;
+    cursor: pointer;
+}
+
+.Profile__submit:hover {
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.Profile__exit {
+    text-decoration: none;
+    border: none;
+    background: none;
+    color: #EE3465;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.Profile__exit:hover {
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.Profile__email-box {
+    margin-top: 17px;
+}
+
+@media(max-width:768px) {
+    .Profile__container {
+        margin-top: 245px;
+    }
+
+    .Profile__form {
+        margin-top: 98px;
+    }
+
+    .Profile__submit {
+        margin-top: 207px;
+    }
+}
+
+@media(max-width:320px) {
+    .Profile__container {
+        margin-top: 83px;
+    }
+
+    .Profile__form {
+        margin-top: 80px;
+        align-items: baseline;
+    }
+
+    .Profile__name-box {
+        margin-left: 29px;
+        width: 81%;
+    }
+
+ 
+
+    .Profile__submit {
+        margin: 375px auto 0;
+    }
+}

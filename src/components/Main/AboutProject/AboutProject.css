@@ -1,0 +1,135 @@
+.AboutProject__content {
+    margin: 112px 70px 103px;
+}
+
+.AboutProject__title {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    margin: 0;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    padding-bottom: 23px;
+}
+
+.AboutProject__text-container {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 53px;
+}
+
+.AboutProject__text-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.AboutProject__text {
+    margin-top: 30px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.AboutProject__text-column {
+    max-width: 550px;
+}
+
+.AboutProject__time-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    text-align: center;
+    grid-template-rows: 36px 36px;
+    margin-top: 95px;
+    font-size: 14px;
+}
+
+.AboutProject__1week {
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(61, 220, 132, 1);
+    margin: 0;
+    padding-top: 10px;
+
+}
+
+.AboutProject__4week {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
+    margin: 0;
+    padding-top: 10px;
+}
+
+.AboutProject__stack {
+    color: rgba(139, 139, 139, 1);
+}
+
+@media (max-width: 768px) {
+    .AboutProject__content {
+        margin: 95px 50px 87px;
+    }
+
+    .AboutProject__text {
+        margin-top: 27px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .AboutProject__text-column:first-child {
+        margin-right: 30px;
+    }
+
+    .AboutProject__time-container {
+        margin-top: 81px;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .AboutProject__content {
+        margin: 67px 18px 87px;
+    }
+
+    .AboutProject__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 27px;
+    }
+
+    .AboutProject__text {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        margin-top: 14px;
+    }
+
+    .AboutProject__text-container {
+        display: block;
+        margin-top: 63px;
+    }
+
+    .AboutProject__text-title {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.72px;
+        margin-bottom: 0px;
+    }
+    .AboutProject__text-column:last-child{
+        margin-top: 58px;
+    }
+    .AboutProject__time-container{
+        margin-top: 62px;
+        grid-template-columns: 2.2fr 4fr;
+        font-size: 11px;
+    }
+
+}

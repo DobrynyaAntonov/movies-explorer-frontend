@@ -1,0 +1,66 @@
+.SearchForm {
+    margin-left: 68px;
+    margin-top: 80px;
+    display: flex;
+
+}
+
+
+.SearchForm__input {
+    max-width: 1086px;
+    width: 82vw;
+    height: 50px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    background-color: rgba(47, 47, 47, 1);
+    padding: 0 20px;
+    margin-top: 18px;
+    color: #fff;
+}
+
+.SearchForm__submit {
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    background-image: url('../../../images/find-3.svg');
+    padding: 0;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+.SearchForm__submit:hover {
+   opacity: 0.5;
+   transition: 0.5s;
+   cursor: pointer;
+}
+
+@media(max-width:768px){
+    .SearchForm{
+        margin-left: 28px;
+        margin-top: 73px;
+    }
+    .SearchForm__input{
+        padding-right: 8px;
+    }
+}
+
+@media(max-width:320px){
+    .SearchForm{
+        margin-left: 14px;
+        margin-top: 79px;
+    }
+    .SearchForm__input{
+        padding: 0 13px;
+        height: 44px;
+        width: 67vw;
+    }
+    .SearchForm__input::placeholder{
+        font-size: 14px;
+    }
+    .SearchForm__submit{
+        margin-top: 17px;
+    }
+}

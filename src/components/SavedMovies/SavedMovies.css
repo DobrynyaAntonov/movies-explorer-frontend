@@ -1,0 +1,11 @@
+@media(max-width:768px){
+    .SavedMovies{
+        margin-bottom: 180px;
+    }
+}
+
+@media(max-width:320px){
+    .SavedMovies{
+        margin-bottom: 80px;
+    }
+}
