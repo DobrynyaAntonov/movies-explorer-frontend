@@ -7,22 +7,22 @@ function Navigation({ loggedIn }) {
 
 
     return (
-        <>
+        <section className="navigation">
             {loggedIn ? (
-                <div className="Navigation__true">
-                    <Link to="/movies" className={`Navigation__hover Navigation__true Navigation__film ${window.location.pathname === '/movies' ? 'active' : ''}`}>Фильмы</Link>
-                    <Link to="/saved-movies" className={`Navigation__hover Navigation__true Navigation__save-film ${window.location.pathname === '/saved-movies' ? 'active' : ''}`}>Сохраненные фильмы</Link>
-                    <Link to="/profile" className={`Navigation__hover Navigation__me ${window.location.pathname === '/profile' ? 'active' : ''}`}>Аккаунт</Link>
+                <div className="navigation__true">
+                    <Link to="/movies" className={`navigation__hover navigation__true navigation__film ${window.location.pathname === '/movies' ? 'active' : ''}`}>Фильмы</Link>
+                    <Link to="/saved-movies" className={`navigation__hover navigation__true navigation__save-film ${window.location.pathname === '/saved-movies' ? 'active' : ''}`}>Сохраненные фильмы</Link>
+                    <Link to="/profile" className={`navigation__hover navigation__me ${window.location.pathname === '/profile' ? 'active' : ''}`}>Аккаунт</Link>
 
                 </div>
             ) : (
-                <div className="Navigation__false">
-                    <Link to="/signup" className="Navigation__hover Navigation__regist">Регистрация</Link>
-                    <Link to="/signin" className="Navigation__hover Navigation__entrance"> Войти </Link>
+                <div className="navigation__false">
+                    <Link to="/signup" className="navigation__hover navigation__regist">Регистрация</Link>
+                    <Link to="/signin" className="navigation__hover navigation__entrance"> Войти </Link>
                 </div>
             )}
 
-        </>
+        </ section>
     )
 }
 
@@ -42,7 +42,6 @@ function NavigationMobile({ loggedIn }) {
                 <><button className="mobile__menu-button" onClick={toggleMenu}>
                 </button><div className={`mobile__menu ${isOpen ? 'open' : ''}`}>
                         <button className="mobile__menu-close" onClick={closeMenu}>
-                            <span className="mobile__menu-close-icon">&times;</span>
                         </button>
                         <div className="mobile__menu-container">
                             <Link to="/" className={`mobile__menu-link ${window.location.pathname === '/' ? 'active-mobile' : ''}`} onClick={closeMenu}>Главная</Link>
@@ -53,9 +52,9 @@ function NavigationMobile({ loggedIn }) {
                         </div>
                     </div></>
             ) : (
-                <div className="Navigation__false">
-                    <Link to="/signup" className="Navigation__hover Navigation__regist">Регистрация</Link>
-                    <Link to="/signin" className="Navigation__hover Navigation__entrance"> Войти </Link>
+                <div className="navigation__false">
+                    <Link to="/signup" className="navigation__hover navigation__regist">Регистрация</Link>
+                    <Link to="/signin" className="navigation__hover navigation__entrance"> Войти </Link>
                 </div>
             )}
 

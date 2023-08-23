@@ -1,9 +1,9 @@
-.Navigation__false {
+.navigation__false {
   margin-right: 72px;
-  margin-top: 2px;
+  margin-top: 8px;
 }
 
-.Navigation__regist {
+.navigation__regist {
   width: 76px;
   height: 16px;
   color: rgba(255, 255, 255, 1);
@@ -13,17 +13,18 @@
   font-style: medium;
   font-weight: 400;
   font-size: 12px;
-  margin-right: 35px;
-  font-family: inter;
+  ffont-family: Inter, Arial, sans-serif;
+
+  margin-right: 31px;
 }
 
-.Navigation__hover:hover {
+.navigation__hover:hover {
   opacity: 0.5;
   cursor: pointer;
   transition: 0.5s
 }
 
-.Navigation__entrance {
+.navigation__entrance {
   width: 76px;
   height: 32px;
   color: rgba(0, 0, 0, 1);
@@ -36,9 +37,10 @@
   font-style: normal;
   font-weight: 900;
   padding: 8px 20px;
+  padding-left: 15px;
 }
 
-.Navigation__true {
+.navigation__true {
   text-decoration: none;
   border: none;
   background: none;
@@ -47,7 +49,7 @@
 
 }
 
-.Navigation__film {
+.navigation__film {
   text-decoration: none;
   border: none;
   background: none;
@@ -59,14 +61,14 @@
   margin-right: 30px;
 }
 
-.Navigation__save-film {
+.navigation__save-film {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  margin-right: 28vw;
+  margin-right: 364px;
 }
 
-.Navigation__me {
+.navigation__me {
   width: 100px;
   height: 32px;
   border-radius: 20px;
@@ -81,8 +83,8 @@
   padding: 8px 20px;
 }
 
-.Navigation__true:hover,
-.Navigation__true:focus {
+.navigation__true:hover,
+.navigation__true:focus {
   font-weight: 500;
 }
 
@@ -91,30 +93,31 @@
 }
 
 @media (max-width:768px) {
-  .Navigation__false {
+  .navigation__false {
     margin-right: 29px;
     margin-top: 9px;
   }
 
-  .Navigation__regist {
-    margin-right: 28px;
+  .navigation__regist {
+    margin-right: 33px;
   }
 
-  .Navigation__false {
+  .navigation__false {
     margin-right: 29px;
     margin-top: 8px;
   }
 
+
 }
 
 @media (max-width:320px) {
-  .Navigation__false {
+  .navigation__false {
     margin-right: 13px;
-    margin-top: 9px;
+    margin-top: 8px;
   }
 
-  .Navigation__entrance {
-    padding-left: 12px;
+  .navigation__entrance {
+    padding-left: 11px;
     width: 46px;
     padding-top: 7px;
     padding-right: 12px;
@@ -122,15 +125,16 @@
     font-size: 10px;
   }
 
-  .Navigation__regist {
+  .navigation__regist {
     color: #FFF;
     text-align: right;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
-    margin-right: 11px;
+    margin-right: 13px;
   }
 
 }
@@ -173,7 +177,8 @@
 .mobile__menu-link {
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  ffont-family: Inter, Arial, sans-serif;
+
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -192,18 +197,20 @@
   border-radius: 20px;
   background-color: rgba(49, 49, 49, 1);
   width: 100px;
-  height: 32px;
   color: #FFF;
   text-align: center;
-  font-family: Inter;
+  ffont-family: Inter, Arial, sans-serif;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   padding: 6px 2px;
   padding-bottom: 0px;
   position: absolute;
-  bottom: 90px;
   left: 210px;
+  height: 29px;
+  padding-top: 9px;
+  bottom: 90px;
 }
 
 
@@ -217,12 +224,11 @@
   cursor: pointer;
   width: 22px;
   height: 22px;
+  background-image: url(../../images/close.svg);
+  margin-right: 11px;
+  margin-top: 2px;
 }
 
-.mobile__menu-close-icon {
-  font-size: 24px;
-  color: rgba(255, 255, 255, 1);
-}
 
 .mobile__menu-container:hover,
 .mobile__menu-container:focus {

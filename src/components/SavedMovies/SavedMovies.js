@@ -42,7 +42,7 @@ function SavedMovies() {
   ));
 
   return (
-    <div className="SavedMovies">
+    <section className="savedMovies">
       <SearchForm />
       <FilterCheckbox
         isChecked={shortFilmsOnly}
@@ -50,7 +50,7 @@ function SavedMovies() {
       <div className="MoviesCardList">
         {savedMoviesCards}
       </div>
-    </div>
+    </section>
   )
 }
 

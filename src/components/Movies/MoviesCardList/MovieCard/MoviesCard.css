@@ -1,18 +1,20 @@
-.MoviesCard__container {
+.moviesCard {
     max-width: 360px;
     position: relative;
     max-height: 232px;
+    margin: 0 auto 0;
 }
 
-.MoviesCard__about {
+.moviesCard__about {
     display: flex;
     justify-content: space-between;
     margin: 11px 15px 0;
 }
 
-.MoviesCard__name {
+.moviesCard__name {
     color: #FFF;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -21,10 +23,11 @@
     max-width: 250px;
 }
 
-.MoviesCard__time {
+.moviesCard__time {
     color: #8B8B8B;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -38,14 +41,15 @@
     margin-right: 4px;
 }
 
-.MoviesCard__button-save {
+.moviesCard__button-save {
     position: absolute;
     background: none;
     border: none;
     padding: 0;
     color: #FFF;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -59,17 +63,17 @@
     display: none;
 }
 
-.MoviesCard__button-save:hover {
+.moviesCard__button-save:hover {
     cursor: pointer;
     opacity: 0.6;
     transition: 0.5s;
 }
 
-.MoviesCard__container:hover .MoviesCard__button-save {
+.moviesCard:hover .moviesCard__button-save {
     display: block;
 }
 
-.MoviesCard__button-saved {
+.moviesCard__button-saved {
     background-image: url('../../../../images/save3.svg');
     position: absolute;
     border: none;
@@ -83,14 +87,15 @@
     height: 21px;
 }
 
-.MoviesCard__button-delete {
+.moviesCard__button-delete {
     position: absolute;
     background: none;
     border: none;
     padding: 0;
     color: #FFF;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -105,25 +110,25 @@
     cursor: pointer;
 }
 
-.MoviesCard__container:hover .MoviesCard__button-delete {
+.moviesCard:hover .moviesCard__button-delete {
     display: block;
 }
 
-.MoviesCard__button-delete:hover {
+.moviesCard__button-delete:hover {
     opacity: 0.6;
     transition: 0.5s;
 }
 
 @media(max-width:768px) {
-    .MoviesCard__img {
+    .moviesCard__img {
         max-width: 339px;
     }
 
-    .MoviesCard__about {
+    .moviesCard__about {
         margin: 22px 0px 0;
     }
 
-    .MoviesCard__name {
+    .moviesCard__name {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -131,23 +136,24 @@
 }
 
 @media (max-width: 320px) {
-    .MoviesCard__img {
+    .moviesCard__img {
         max-width: 300px;
     }
 
-    .MoviesCard__about {
+    .moviesCard__about {
         margin-top: 12px;
         color: #FFF;
-        font-family: Inter;
+        ffont-family: Inter, Arial, sans-serif;
+
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
-    .MoviesCard__button-delete{
+    .moviesCard__button-delete{
         display: block;
     }
-    .MoviesCard__button-save{
+    .moviesCard__button-save{
         display: block;
     }
 }

@@ -7,10 +7,10 @@ function SearchForm() {
 
 
     return (
-       <form className="SearchForm">
-        <input className="SearchForm__input"
+       <form className="searchForm">
+        <input className="searchForm__input"
          placeholder="Фильм"></input>
-        <button className="SearchForm__submit" type="submit"></button>
+        <button className="searchForm__submit" type="submit"></button>
        </form>
     )
 }

@@ -5,12 +5,12 @@ function MoviesCard({ name, children, img }) {
 
     return (
         <>
-            <div className="MoviesCard__container">
+            <div className="moviesCard">
                 {children}
-                <img className="MoviesCard__img" src={img} alt={name}></img>
-                <div className="MoviesCard__about">
-                    <p className="MoviesCard__name">{name}</p>
-                    <p className="MoviesCard__time">1ч 17м</p>
+                <img className="moviesCard__img" src={img} alt={name}></img>
+                <div className="moviesCard__about">
+                    <p className="moviesCard__name">{name}</p>
+                    <p className="moviesCard__time">1ч 17м</p>
                 </div>
             </div>
 

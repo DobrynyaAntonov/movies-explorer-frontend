@@ -1,10 +1,10 @@
-.AboutMe__content {
+.aboutMe {
     background-color: rgba(32, 32, 32, 1);
     max-width: 1280px;
     margin-top: 14px;
 }
 
-.AboutMe__title {
+.aboutMe__title {
     color: rgba(255, 255, 255, 1);
     font-family: 'Inter';
     font-style: normal;
@@ -17,14 +17,14 @@
     padding-top: 105px;
 }
 
-.AboutMe__container {
+.aboutMe__container {
     display: flex;
     justify-content: space-between;
     margin: 66px 72px 0;
     color: rgba(255, 255, 255, 1);
 }
 
-.AboutMe__name {
+.aboutMe__name {
     margin: 0;
     font-family: 'Inter';
     font-style: normal;
@@ -32,19 +32,19 @@
     font-size: 47px;
 }
 
-.AboutMe__prof {
+.aboutMe__prof {
     margin: 22px 0 0;
     font-size: 18px;
 }
 
-.AboutMe__life {
+.aboutMe__life {
     margin: 25px 0 0;
     max-width: 600px;
     line-height: 22px;
     font-size: 14px;
 }
 
-.AboutMe__git {
+.aboutMe__git {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
     margin-top: 100px;
@@ -52,17 +52,17 @@
     font-size: 13px;
 }
 
-.AboutMe__git:hover {
+.aboutMe__git:hover {
     cursor: pointer;
     opacity: 0.5;
     transition: 0.5s;
 }
 
-.AboutMe__image {
+.aboutMe__image {
     border-radius: 10px;
 }
 
-.AboutMe__portfolio {
+.aboutMe__portfolio {
     color: rgba(139, 139, 139, 1);
     margin-top: 100px;
     margin-left: 68px;
@@ -72,14 +72,14 @@
     font-size: 18px;
 }
 
-.AboutMe__site {
+.aboutMe__site {
     display: flex;
     flex-direction: column;
     margin: 60px 77px 134px 70px;
     font-size: 28px;
 }
 
-.AboutMe__link {
+.aboutMe__link {
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
     display: flex;
@@ -89,78 +89,84 @@
     padding-bottom: 29px;
 }
 
-.AboutMe__link:hover {
+.aboutMe__link:hover {
     cursor: pointer;
     opacity: 0.5;
     transition: 0.5s;
 }
 
-.AboutMe__link:first-child {
+.aboutMe__link:first-child {
     margin-top: 0;
 }
 
-.AboutMe__link:last-child {
+.aboutMe__link:last-child {
     padding: 0;
     border-bottom: none;
 }
 
+@media (min-width: 768px) and (max-width: 1000px) {
+    /* Ваши стили для этого диапазона экранов */
+}
+
+
 @media (max-width: 768px) {
-    .AboutMe__title {
+    .aboutMe__title {
         margin-left: 52px;
         padding-top: 78px;
     }
 
-    .AboutMe__container {
+    .aboutMe__container {
         margin: 66px 48px 0;
     }
 
-    .AboutMe__name {
+    .aboutMe__name {
         font-size: 40px;
     }
 
-    .AboutMe__prof {
+    .aboutMe__prof {
         font-size: 12px;
         margin-top: 13px;
     }
 
-    .AboutMe__life {
+    .aboutMe__life {
         font-size: 12px;
         line-height: 18px;
         max-width: 364px;
         margin-top: 22px;
     }
 
-    .AboutMe__git {
+    .aboutMe__git {
         margin-top: 89px;
     }
 
-    .AboutMe__image {
+    .aboutMe__image {
         width: 38.2%;
         object-fit: contain;
     }
 
-    .AboutMe__site {
+    .aboutMe__site {
         margin-left: 52px;
         margin-right: 55px;
-
+        margin-bottom: 103px;
     }
 
-    .AboutMe__portfolio {
+    .aboutMe__portfolio {
         margin-left: 50px;
         margin-top: 89px;
     }
 
-    .AboutMe__link {
+    .aboutMe__link {
         font-size: 26px;
     }
 
-    .AboutMe__link:last-child {
+    .aboutMe__link:last-child {
         margin-top: 33px;
     }
 }
 
-@media (max-width: 320px) {
-    .AboutMe__title {
+
+@media (min-width: 320px) and (max-width: 550px) {
+    .aboutMe__title {
         font-size: 18px;
         letter-spacing: -0.72px;
         padding-top: 125px;
@@ -168,35 +174,35 @@
         margin-right: 15px;
     }
 
-    .AboutMe__container {
+    .aboutMe__container {
         flex-direction: column-reverse;
         margin: 0 15px 0;
     }
 
-    .AboutMe__image {
+    .aboutMe__image {
         width: 100%;
         margin-top: 64px
     }
 
-    .AboutMe__name {
+    .aboutMe__name {
         font-size: 30px;
         letter-spacing: -1.2px;
         margin-top: 41px;
     }
 
-    .AboutMe__prof {
+    .aboutMe__prof {
         font-size: 11px;
         line-height: 16px;
         margin-top: 22px;
     }
 
-    .AboutMe__life {
+    .aboutMe__life {
         font-size: 11px;
         line-height: 16px;
         margin-top: 20px;
     }
 
-    .AboutMe__git {
+    .aboutMe__git {
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -204,23 +210,88 @@
         margin-top: 42px;
     }
 
-    .AboutMe__site {
+    .aboutMe__site {
         margin: 44px 15px 0;
     }
 
-    .AboutMe__portfolio {
+    .aboutMe__portfolio {
         font-size: 14px;
         line-height: 20px;
         margin-left: 15px;
         margin-top: 68px;
     }
 
-    .AboutMe__link {
+    .aboutMe__link {
         font-size: 18px;
         letter-spacing: -0.72px;
         padding-bottom: 22px;
     }
-    .AboutMe__link:last-child{
+    .aboutMe__link:last-child{
+        margin-top: 22px;
+    }
+}
+@media (max-width: 320px) {
+    .aboutMe__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-top: 125px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .aboutMe__container {
+        flex-direction: column-reverse;
+        margin: 0 15px 0;
+    }
+
+    .aboutMe__image {
+        width: 100%;
+        margin-top: 64px
+    }
+
+    .aboutMe__name {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin-top: 41px;
+    }
+
+    .aboutMe__prof {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 22px;
+    }
+
+    .aboutMe__life {
+        font-size: 11px;
+        line-height: 16px;
+        margin-top: 20px;
+    }
+
+    .aboutMe__git {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 42px;
+    }
+
+    .aboutMe__site {
+        margin: 44px 15px 0;
+    }
+
+    .aboutMe__portfolio {
+        font-size: 14px;
+        line-height: 20px;
+        margin-left: 15px;
+        margin-top: 68px;
+    }
+
+    .aboutMe__link {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 22px;
+    }
+    .aboutMe__link:last-child{
         margin-top: 22px;
     }
 }

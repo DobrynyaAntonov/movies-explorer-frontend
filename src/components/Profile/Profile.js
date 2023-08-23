@@ -1,34 +1,39 @@
 import React from "react";
 import './Profile.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function Profile() {
+    const navigate = useNavigate();
 
+    const handleExit = () => {
+      navigate('/');
+    };
 
     return (
-        <div className="Profile__container">
-            <h2 className="Profile__name">Привет, Виталий!</h2>
-            <form className="Profile__form">
-                <div className="Profile__name-box" >
-                    <input className="Profile__input-name"
+        <section className="profile">
+            <h2 className="profile__name">Привет, Виталий!</h2>
+            <form className="profile__form">
+                <div className="profile__name-box" >
+                    <input className="profile__input-name"
                         placeholder="Имя"
                     ></input>
-                    <p className="Profile__name-name">
+                    <p className="profile__name-name">
                         Виталий
                     </p>
                 </div>
-                <div className="Profile__email-box Profile__name-box">
-                    <input className="Profile__input-email Profile__input-name"
+                <div className="profile__email-box profile__name-box">
+                    <input className="profile__input-email profile__input-name"
                         placeholder="E-mail"
                     ></input>
-                    <p className="Profile__email Profile__name-name">
+                    <p className="profile__email profile__name-name">
                         pochta@yandex.ru
                     </p>
                 </div>
-                <button className="Profile__submit" type="submit">Редактировать</button>
+                <button className="profile__submit" type="submit">Редактировать</button>
             </form>
-            <button className="Profile__exit">Выйти из аккаунта</button>
-        </div>
+            <button className="profile__exit" onClick={handleExit}>Выйти из аккаунта</button>
+        </section>
     )
 }
 

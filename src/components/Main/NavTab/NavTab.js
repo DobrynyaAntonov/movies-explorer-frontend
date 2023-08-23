@@ -6,7 +6,7 @@ function NavTab() {
 
 
     return (
-          <div className="navigate__container">
+          <div className="navigate">
             <a className="navigate__link" href="#project">О проекте</a>
             <a className="navigate__link" href="#tech">Технологии</a>
             <a className="navigate__link" href="#student">Студент</a>

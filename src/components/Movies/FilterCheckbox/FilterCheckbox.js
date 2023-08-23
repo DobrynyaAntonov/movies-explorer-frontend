@@ -3,19 +3,19 @@ import './FilterCheckbox.css';
 
 function FilterCheckbox({ isChecked, onChange }) {
     return (
-        <div className="FilterCheckbox__container">
-            <label className="FilterCheckbox">
+        <section className="filterCheckbox">
+            <label className="filterCheckbox__label">
                 <input
-                    className="FilterCheckbox__input"
+                    className="filterCheckbox__input"
                     type="checkbox"
                     checked={isChecked}
                     onChange={onChange}
                 />
-                <span className="FilterCheckbox__ball"></span>
+                <span className="filterCheckbox__ball"></span>
 
             </label>
-            <p className="FilterCheckbox__text">Короткометражки</p>
-        </div>
+            <p className="filterCheckbox__text">Короткометражки</p>
+        </section>
     );
 };
 

@@ -1,12 +1,13 @@
-.Profile__container {
+.profile {
     text-align: center;
     margin-top: 89px;
 }
 
-.Profile__name {
+.profile__name {
     color: #FFF;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -14,7 +15,7 @@
     margin: 0;
 }
 
-.Profile__input-name {
+.profile__input-name {
     width: 141px;
     height: 14px;
     text-decoration: none;
@@ -25,37 +26,39 @@
     color: #FFF;
 }
 
-.Profile__input-name::placeholder {
+.profile__input-name::placeholder {
     color: #FFF;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 11px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
 }
 
-.Profile__form {
+.profile__form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 124px;
 }
 
-.Profile__name-box {
+.profile__name-box {
     display: flex;
     justify-content: space-between;
-    width: 32%;
+    width: 53%;
 }
 
-.Profile__name-box:first-child {
+.profile__name-box:first-child {
     border-bottom: 1px solid rgba(66, 66, 66, 1);
     padding-bottom: 18px;
 }
 
-.Profile__name-name {
+.profile__name-name {
     color: #FFF;
     text-align: right;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -64,10 +67,11 @@
 
 }
 
-.Profile__submit {
+.profile__submit {
     color: #FFF;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
@@ -79,18 +83,19 @@
     cursor: pointer;
 }
 
-.Profile__submit:hover {
+.profile__submit:hover {
     opacity: 0.6;
     transition: 0.5s;
 }
 
-.Profile__exit {
+.profile__exit {
     text-decoration: none;
     border: none;
     background: none;
     color: #EE3465;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -99,47 +104,70 @@
     cursor: pointer;
 }
 
-.Profile__exit:hover {
+.profile__exit:hover {
     opacity: 0.6;
     transition: 0.5s;
 }
 
-.Profile__email-box {
+.profile__email-box {
     margin-top: 17px;
 }
 
 @media(max-width:768px) {
-    .Profile__container {
+    .profile {
         margin-top: 245px;
     }
 
-    .Profile__form {
+    .profile__form {
         margin-top: 98px;
     }
 
-    .Profile__submit {
+    .profile__submit {
         margin-top: 207px;
     }
 }
 
-@media(max-width:320px) {
-    .Profile__container {
+@media (min-width: 320px) and (max-width: 480px) {
+    .profile {
         margin-top: 83px;
     }
 
-    .Profile__form {
+    .profile__form {
         margin-top: 80px;
         align-items: baseline;
     }
 
-    .Profile__name-box {
+    .profile__name-box {
         margin-left: 29px;
         width: 81%;
     }
 
  
 
-    .Profile__submit {
+    .profile__submit {
+        margin: 375px auto 0;
+    }
+}
+
+
+@media(max-width:320px) {
+    .profile {
+        margin-top: 83px;
+    }
+
+    .profile__form {
+        margin-top: 80px;
+        align-items: baseline;
+    }
+
+    .profile__name-box {
+        margin-left: 29px;
+        width: 81%;
+    }
+
+ 
+
+    .profile__submit {
         margin: 375px auto 0;
     }
 }

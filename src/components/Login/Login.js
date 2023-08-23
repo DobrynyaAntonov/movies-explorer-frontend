@@ -11,24 +11,25 @@ function Login() {
     }
 
     return (
-        <div className="Login">
-            <div className="Login__container">
-                <img className="Login__logo" src={img} alt="лого проекта" onClick={clickLogo}>
-                </img>
-                <h2 className="Login__text">Рады видеть!</h2>
-                <form>
-                    <p className="Login__email">E-mail</p>
-                    <input className="Login__input-email"></input>
-                    <p className="Login__pass">Пароль</p>
-                    <input className="Login__input-password" type="password"></input>
-                    <button className="Login__submit" type="submit">Войти</button>
-                </form>
-                <div className="Login__container-regist">
-                    <p className="Login__text-regist">Ещё не зарегистрированы?</p>
-                    <Link to="/signup" className="Login__button-regist">Регистрация</Link>
-                </div>
-            </div>
+        <section className="login">
+    <div className="login__container">
+        <img className="login__logo" src={img} alt="лого проекта" onClick={clickLogo} />
+        <h2 className="login__text">Рады видеть!</h2>
+        <form className="login__form">
+            <p className="login__email-form">E-mail</p>
+            <input className="login__input-email" type="email" required placeholder="Введите ваш e-mail" />
+            <p className="login__password-form">Пароль</p>
+            <input className="login__input-password" type="password" minLength="6" maxLength="20" required placeholder="Введите пароль от 6 до 20 символов" />
+            <button className="login__submit-form" type="submit">Войти</button>
+        </form>
+        <div className="login__regist">
+            <p className="login__text-regist">Ещё не зарегистрированы?</p>
+            <Link to="/signup" className="login__button-regist">Регистрация</Link>
         </div>
+    </div>
+</section>
+
+
     )
 }
 

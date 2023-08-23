@@ -1,4 +1,4 @@
-.SearchForm {
+.searchForm {
     margin-left: 68px;
     margin-top: 80px;
     display: flex;
@@ -6,7 +6,7 @@
 }
 
 
-.SearchForm__input {
+.searchForm__input {
     max-width: 1086px;
     width: 82vw;
     height: 50px;
@@ -20,7 +20,7 @@
     color: #fff;
 }
 
-.SearchForm__submit {
+.searchForm__submit {
     width: 44px;
     height: 44px;
     text-decoration: none;
@@ -31,36 +31,36 @@
     margin-top: 20px;
     margin-left: 8px;
 }
-.SearchForm__submit:hover {
+.searchForm__submit:hover {
    opacity: 0.5;
    transition: 0.5s;
    cursor: pointer;
 }
 
 @media(max-width:768px){
-    .SearchForm{
+    .searchForm{
         margin-left: 28px;
         margin-top: 73px;
     }
-    .SearchForm__input{
+    .searchForm__input{
         padding-right: 8px;
     }
 }
 
 @media(max-width:320px){
-    .SearchForm{
+    .searchForm{
         margin-left: 14px;
         margin-top: 79px;
     }
-    .SearchForm__input{
+    .searchForm__input{
         padding: 0 13px;
         height: 44px;
         width: 67vw;
     }
-    .SearchForm__input::placeholder{
+    .searchForm__input::placeholder{
         font-size: 14px;
     }
-    .SearchForm__submit{
+    .searchForm__submit{
         margin-top: 17px;
     }
 }

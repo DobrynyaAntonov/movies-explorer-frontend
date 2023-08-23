@@ -1,16 +1,17 @@
-.Login {
+.login {
     display: flex;
 
 }
 
-.Login__container {
+.login__container {
     margin: 65px auto 0;
     width: 396px;
 }
 
-.Login__text {
+.login__text {
     color: #FFF;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -18,9 +19,10 @@
     margin: 40px 0 0;
 }
 
-.Login__email {
+.login__email-form {
     color: #8B8B8B;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -28,7 +30,7 @@
     margin: 40px 0 0;
 }
 
-.Login__input-email {
+.login__input-email {
     border-radius: 8px;
     background: #2F2F2F;
     border: none;
@@ -39,9 +41,10 @@
     color: #FFF;
 }
 
-.Login__pass {
+.login__password-form {
     color: #8B8B8B;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -49,7 +52,7 @@
     margin: 20px 0 0;
 }
 
-.Login__input-password {
+.login__input-password {
     border-radius: 8px;
     background: #2F2F2F;
     border: none;
@@ -62,7 +65,7 @@
     input-security: disc;
 }
 
-.Login__submit {
+.login__submit-form {
     width: 100%;
     height: 45px;
     flex-shrink: 0;
@@ -71,7 +74,8 @@
     border: none;
     color: #FFF;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -80,21 +84,22 @@
     cursor: pointer;
 }
 
-.Login__submit:hover {
+.login__submit-form:hover {
     opacity: 0.8;
     transition: 0.5s;
 }
 
-.Login__container-regist {
+.login__regist {
     display: flex;
     justify-content: center;
     margin-top: 16px;
 }
 
-.Login__text-regist {
+.login__text-regist {
     color: #8B8B8B;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -102,10 +107,11 @@
     margin: 0 6px 0 0;
 }
 
-.Login__button-regist {
+.login__button-regist {
     color: #4285F4;
     text-align: center;
-    font-family: Inter;
+    ffont-family: Inter, Arial, sans-serif;
+
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -114,53 +120,64 @@
     cursor: pointer;
 }
 
-.Login__button-regist:hover {
+.login__button-regist:hover {
     opacity: 0.7;
     transition: 0.5s;
 }
 
 @media(max-width:768px) {
-    .Login__container {
+    .login__container {
         margin-top: 230px;
         width: 51%;
     }
 
 }
 
+@media (min-width: 320px) and (max-width: 560px) {
+    .login__container {
+        margin: 56px 30px;
+        width: 81%;
+    }
+    .login__text-regist {
+        font-size: 12px;
+    }
+
+}
+
 @media(max-width:320px) {
-    .Login__container {
-        margin-top: 56px;
+    .login__container {
+        margin: 56px 30px;
         width: 81%;
     }
 
-    .Login__logo {
+    .login__logo {
         margin: 0 auto 0;
         display: block;
     }
 
-    .Login__text {
+    .login__text {
         margin-top: 50px;
         margin-left: 50px;
     }
 
-    .Login__email {
+    .login__email-form {
         margin-top: 81px;
     }
 
-    .Login__submit {
+    .login__submit-form {
         margin-top: 262px;
         font-size: 12px;
     }
 
-    .Login__container-regist {
+    .login__regist {
         margin-top: 14px;
     }
 
-    .Login__text-regist {
+    .login__text-regist {
         font-size: 12px;
     }
 
-    .Login__button-regist {
+    .login__button-regist {
         font-size: 12px;
     }
 }

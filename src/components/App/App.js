@@ -15,7 +15,7 @@ import NotFound from "../NotFound/NotFound";
 
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(true)
     const [savedMovies, setSavedMovies] = useState(true)
 
 

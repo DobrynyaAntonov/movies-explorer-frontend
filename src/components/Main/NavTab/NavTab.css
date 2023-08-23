@@ -1,4 +1,4 @@
-.navigate__container {
+.navigate {
     display: flex;
     justify-content: center;
     margin-top: 153px;
@@ -31,13 +31,14 @@
 }
 
 @media (max-width: 768px) {
-    .navigate__container {
-        margin-top: 314px;
+    .navigate {
+        margin-top: 0;
+        margin-bottom: 29px;
     }
 }
 
 @media (max-width: 320px) {
-    .navigate__container {
+    .navigate {
         margin-top: 204px;
     }
 
@@ -45,7 +46,8 @@
         width: 82px;
         height: 26px;
         color: #FFF;
-        font-family: Inter;
+        ffont-family: Inter, Arial, sans-serif;
+
         font-size: 10px;
         font-style: normal;
         font-weight: 500;

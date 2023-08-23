@@ -80,19 +80,19 @@ function MoviesCardList({ movies }) {
       img={card.img}
     >
       {card.owner ? (
-        <button className="MoviesCard__button-saved"></button>
+        <button className="moviesCard__button-saved"></button>
       ) : (
-        <button className="MoviesCard__button-save">Сохранить</button>
+        <button className="moviesCard__button-save">Сохранить</button>
       )}
     </MovieCard>
   ));
 
   return (
     <>
-      <div className="MoviesCardList">
+      <section className="moviesCardList">
         {visibleCards}
-      </div>
-      <button className="MoviesCardList__more">Ещё</button>
+      </section>
+      <button className="moviesCardList__more">Ещё</button>
     </>
   );
 };
