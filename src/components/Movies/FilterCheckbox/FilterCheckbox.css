@@ -57,8 +57,7 @@
 
 .filterCheckbox__text {
     color: #FFF;
-    ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;

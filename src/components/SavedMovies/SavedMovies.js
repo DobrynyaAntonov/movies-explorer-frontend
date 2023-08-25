@@ -37,7 +37,7 @@ function SavedMovies() {
       name={movie.name}
       img={movie.img}
     >
-      <button className="MoviesCard__button-delete"></button>
+      <button className="moviesCard__button-delete"></button>
     </MovieCard>
   ));
 
@@ -47,7 +47,7 @@ function SavedMovies() {
       <FilterCheckbox
         isChecked={shortFilmsOnly}
         onChange={handleCheckboxChange} />
-      <div className="MoviesCardList">
+      <div className="moviesCardList">
         {savedMoviesCards}
       </div>
     </section>

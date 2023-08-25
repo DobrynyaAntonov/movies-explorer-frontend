@@ -13,12 +13,31 @@
   font-style: medium;
   font-weight: 400;
   font-size: 12px;
-  ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
   margin-right: 31px;
 }
 
-.navigation__hover:hover {
+.mobile__regist {
+  width: 76px;
+  height: 16px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(32, 32, 32, 1);
+  text-decoration: none;
+  border: medium none;
+  font-style: medium;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: 'Inter', Arial, sans-serif;
+  margin-right: 31px;
+}
+
+.navigation__regist:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
+}
+
+.mobile__regist:hover {
   opacity: 0.5;
   cursor: pointer;
   transition: 0.5s
@@ -33,11 +52,39 @@
   border: medium none;
   font-size: 12px;
   border-radius: 3px;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 900;
   padding: 8px 20px;
   padding-left: 15px;
+}
+
+.mobile__entrance {
+  width: 76px;
+  height: 32px;
+  color: rgba(0, 0, 0, 1);
+  background-color: rgba(61, 220, 132, 1);
+  text-decoration: none;
+  border: medium none;
+  font-size: 12px;
+  border-radius: 3px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  padding: 8px 20px;
+  padding-left: 15px;
+}
+
+.navigation__entrance:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
+}
+
+.mobile__entrance:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
 }
 
 .navigation__true {
@@ -46,10 +93,9 @@
   background: none;
   color: rgba(255, 255, 255, 1);
   padding: 0;
-
 }
 
-.navigation__film {
+.navigation__true-film {
   text-decoration: none;
   border: none;
   background: none;
@@ -61,14 +107,31 @@
   margin-right: 30px;
 }
 
-.navigation__save-film {
+.navigation__true-film:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
+}
+
+.navigation__true-saved {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   margin-right: 364px;
+  text-decoration: none;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 1);
+  padding: 0;
 }
 
-.navigation__me {
+.navigation__true-saved:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
+}
+
+.navigation__true-me {
   width: 100px;
   height: 32px;
   border-radius: 20px;
@@ -83,26 +146,35 @@
   padding: 8px 20px;
 }
 
-.navigation__true:hover,
-.navigation__true:focus {
-  font-weight: 500;
+.navigation__true-me:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s
 }
+
 
 .active {
   font-weight: 500;
 }
 
+@media (max-width: 1279px) and (min-width: 769px) {
+  .navigation__true-saved {
+    margin-right: 28vw;
+  }
+}
+
 @media (max-width:768px) {
-  .navigation__false {
+
+  .mobile__false {
     margin-right: 29px;
     margin-top: 9px;
   }
 
-  .navigation__regist {
+  .mobile__regist {
     margin-right: 33px;
   }
 
-  .navigation__false {
+  .mobile__false {
     margin-right: 29px;
     margin-top: 8px;
   }
@@ -111,12 +183,13 @@
 }
 
 @media (max-width:320px) {
-  .navigation__false {
+
+  .mobile__false {
     margin-right: 13px;
-    margin-top: 8px;
+    margin-top: 8px
   }
 
-  .navigation__entrance {
+  .mobile__entrance {
     padding-left: 11px;
     width: 46px;
     padding-top: 7px;
@@ -125,11 +198,10 @@
     font-size: 10px;
   }
 
-  .navigation__regist {
+  .mobile__regist {
     color: #FFF;
     text-align: right;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 10px;
     font-style: normal;
     font-weight: 500;
@@ -177,8 +249,7 @@
 .mobile__menu-link {
   color: #FFF;
   text-align: center;
-  ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -199,15 +270,14 @@
   width: 100px;
   color: #FFF;
   text-align: center;
-  ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   padding: 6px 2px;
   padding-bottom: 0px;
   position: absolute;
-  left: 210px;
+  left: calc(50% - 51px);
   height: 29px;
   padding-top: 9px;
   bottom: 90px;
@@ -216,17 +286,15 @@
 
 .mobile__menu-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  right: 27px;
+  top: 26px;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   width: 22px;
   height: 22px;
-  background-image: url(../../images/close.svg);
-  margin-right: 11px;
-  margin-top: 2px;
+  background: url(../../images/close.svg) no-repeat center center;
 }
 
 

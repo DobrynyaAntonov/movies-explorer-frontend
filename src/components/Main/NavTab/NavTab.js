@@ -5,13 +5,13 @@ function NavTab() {
 
 
 
-    return (
-          <div className="navigate">
-            <a className="navigate__link" href="#project">О проекте</a>
-            <a className="navigate__link" href="#tech">Технологии</a>
-            <a className="navigate__link" href="#student">Студент</a>
-          </div>
-    )
+  return (
+    <ul className="navigate">
+      <li className="navigate__link"><a className="navigate__anchor-link" href="#project">О проекте</a></li>
+      <li className="navigate__link"><a className="navigate__anchor-link" href="#tech">Технологии</a></li>
+      <li className="navigate__link"><a className="navigate__anchor-link" href="#student">Студент</a></li>
+    </ul>
+  )
 }
 
 export default NavTab;

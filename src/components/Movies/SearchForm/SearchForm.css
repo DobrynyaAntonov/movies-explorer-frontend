@@ -36,6 +36,16 @@
    transition: 0.5s;
    cursor: pointer;
 }
+@media (min-width: 768px) and (max-width: 1000px) {
+    .searchForm{
+        margin-left: 28px;
+        margin-top: 73px;
+    }
+    .searchForm__input{
+        padding-right: 8px;
+    }
+
+}
 
 @media(max-width:768px){
     .searchForm{

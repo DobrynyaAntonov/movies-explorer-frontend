@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     margin-top: 153px;
+    list-style: none;
+    padding: 0;
 }
 
 .navigate__link {
@@ -13,7 +15,7 @@
     border: medium none;
     font-size: 12px;
     border-radius: 10px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     text-align: center;
@@ -28,6 +30,11 @@
     opacity: 0.5;
     transition: 0.5s;
     cursor: pointer;
+}
+
+.navigate__anchor-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 768px) {
@@ -46,8 +53,7 @@
         width: 82px;
         height: 26px;
         color: #FFF;
-        ffont-family: Inter, Arial, sans-serif;
-
+      font-family: 'Inter', Arial, sans-serif;
         font-size: 10px;
         font-style: normal;
         font-weight: 500;

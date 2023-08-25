@@ -6,8 +6,7 @@
 .profile__name {
     color: #FFF;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -28,8 +27,7 @@
 
 .profile__input-name::placeholder {
     color: #FFF;
-    ffont-family: Inter, Arial, sans-serif;
-
+  font-family: 'Inter', Arial, sans-serif;
     font-size: 11px;
     font-style: normal;
     font-weight: 500;
@@ -46,7 +44,7 @@
 .profile__name-box {
     display: flex;
     justify-content: space-between;
-    width: 53%;
+    width: 32%;
 }
 
 .profile__name-box:first-child {
@@ -57,8 +55,7 @@
 .profile__name-name {
     color: #FFF;
     text-align: right;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -70,8 +67,7 @@
 .profile__submit {
     color: #FFF;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
@@ -94,8 +90,7 @@
     background: none;
     color: #EE3465;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -124,6 +119,11 @@
 
     .profile__submit {
         margin-top: 207px;
+    }
+    .profile__name-box {
+        display: flex;
+        justify-content: space-between;
+        width: 51%;
     }
 }
 

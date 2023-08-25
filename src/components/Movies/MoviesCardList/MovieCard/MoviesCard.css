@@ -13,8 +13,7 @@
 
 .moviesCard__name {
     color: #FFF;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -26,8 +25,7 @@
 .moviesCard__time {
     color: #8B8B8B;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
@@ -48,8 +46,7 @@
     padding: 0;
     color: #FFF;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -94,8 +91,7 @@
     padding: 0;
     color: #FFF;
     text-align: center;
-    ffont-family: Inter, Arial, sans-serif;
-
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
@@ -119,6 +115,16 @@
     transition: 0.5s;
 }
 
+@media (min-width: 768px) and (max-width: 1000px) {
+    .moviesCard__img {
+        max-width: 339px;
+    }
+    .moviesCard {
+        max-width: 339px;
+    }
+
+}
+
 @media(max-width:768px) {
     .moviesCard__img {
         max-width: 339px;
@@ -135,6 +141,16 @@
     }
 }
 
+@media (max-width: 767px) and (min-width: 320px) {
+    .moviesCard__img {
+        max-width: 300px;
+    }
+    .moviesCard {
+        max-width: 300px;
+    }
+}
+
+
 @media (max-width: 320px) {
     .moviesCard__img {
         max-width: 300px;
@@ -143,17 +159,18 @@
     .moviesCard__about {
         margin-top: 12px;
         color: #FFF;
-        ffont-family: Inter, Arial, sans-serif;
-
+        font-family: 'Inter', Arial, sans-serif;
         font-size: 12px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
-    .moviesCard__button-delete{
+
+    .moviesCard__button-delete {
         display: block;
     }
-    .moviesCard__button-save{
+
+    .moviesCard__button-save {
         display: block;
     }
 }

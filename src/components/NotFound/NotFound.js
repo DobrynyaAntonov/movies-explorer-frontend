@@ -10,12 +10,12 @@ function NotFound() {
     }
 
     return (
-        <div className="notFound">
+        <section className="notFound">
             <h2 className="notFound__title">404</h2>
             <p className="notFound__text">Страница не найдена</p>
             <button className="notFound__exit" onClick={exit}>Назад</button>
             
-        </div>
+        </section>
     )
 }
 

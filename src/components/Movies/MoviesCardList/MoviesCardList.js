@@ -74,25 +74,26 @@ function MoviesCardList({ movies }) {
   const visibleCardCount = isMobile ? (window.innerWidth <= 320 ? 5 : 8) : 12;
 
   const visibleCards = cardData.slice(0, visibleCardCount).map((card, index) => (
-    <MovieCard
-      key={index}
-      name={card.name}
-      img={card.img}
-    >
-      {card.owner ? (
-        <button className="moviesCard__button-saved"></button>
-      ) : (
-        <button className="moviesCard__button-save">Сохранить</button>
-      )}
-    </MovieCard>
+    <li key={index} className="moviesCardList__item">
+      <MovieCard
+        name={card.name}
+        img={card.img}
+      >
+        {card.owner ? (
+          <button className="moviesCard__button-saved"></button>
+        ) : (
+          <button className="moviesCard__button-save">Сохранить</button>
+        )}
+      </MovieCard>
+    </li>
   ));
 
   return (
     <>
-      <section className="moviesCardList">
+      <ul className="moviesCardList">
         {visibleCards}
-      </section>
-      <button className="moviesCardList__more">Ещё</button>
+      </ul>
+      <button className="more">Ещё</button>
     </>
   );
 };

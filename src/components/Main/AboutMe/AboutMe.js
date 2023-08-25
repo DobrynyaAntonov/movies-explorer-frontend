@@ -25,11 +25,21 @@ function AboutMe() {
                     alt="Моя фотогафия"></img>
             </div>
             <h3 className="aboutMe__portfolio">Портфолио</h3>
-            <div className="aboutMe__site">
-                <a className="aboutMe__link" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Статичный сайт <img src={icon} alt="переход на сайт"></img></a>
-                <a className="aboutMe__link" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Адаптивный сайт <img src={icon} alt="переход на сайт"></img></a>
-                <a className="aboutMe__link" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Одностраничное приложение <img src={icon} alt="переход на сайт"></img></a>
-            </div>
+            <ul className="aboutMe__site">
+                <li className="aboutMe__link">
+                    <a className="aboutMe__anchor" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Статичный сайт</a>
+                    <img className="aboutMe__icon" src={icon} alt="переход на сайт" />
+                </li>
+                <li className="aboutMe__link">
+                    <a className="aboutMe__anchor" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Адаптивный сайт</a>
+                    <img className="aboutMe__icon" src={icon} alt="переход на сайт" />
+                </li>
+                <li className="aboutMe__link">
+                    <a className="aboutMe__anchor" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Одностраничное приложение</a>
+                    <img className="aboutMe__icon" src={icon} alt="переход на сайт" />
+                </li>
+            </ul>
+
         </section>
     )
 }
