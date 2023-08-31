@@ -3,6 +3,12 @@
 
 }
 
+.login__submit-form.disabled {
+    background-color: rgba(248, 248, 248, 1);
+    cursor: pointer;
+    color: #C2C2C2;
+}
+
 .login__container {
     margin: 65px auto 0;
     width: 396px;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './SearchForm.css';
+import '../../Movies/SearchForm/SearchForm.css';
 
 function SearchForm({ handleSearch }) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -14,7 +14,7 @@ function SearchForm({ handleSearch }) {
     }
 
     useEffect(() => {
-        const savedQuery = localStorage.getItem("searchQuery");
+        const savedQuery = localStorage.getItem("searchQuerySave");
         if (savedQuery) {
             setSearchQuery(savedQuery);
             handleSearch(savedQuery);
@@ -22,7 +22,7 @@ function SearchForm({ handleSearch }) {
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("searchQuery", searchQuery);
+        localStorage.setItem("searchQuerySave", searchQuery);
     }, [searchQuery]);
 
     return (
