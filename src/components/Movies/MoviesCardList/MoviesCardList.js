@@ -4,13 +4,13 @@ import './MoviesCardList.css';
 import MovieCard from './MovieCard/MoviesCard'
 import * as MainApi from "../../../utils/MainApi";
 
-function MoviesCardList({ movie }) {
+function MoviesCardList({ movies }) {
   const [saveMovies, setSaveMovies] = useState([]);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const [visibleCardCount, setVisibleCardCount] = useState(
     isMobile ? (window.innerWidth <= 320 ? 5 : 8) : 12
   );
-  const isLoadMoreVisible = visibleCardCount < movie.length;
+  const isLoadMoreVisible = visibleCardCount < movies.length;
 
   const handleLoadMore = () => {
     if (window.innerWidth <= 1279) {
@@ -80,7 +80,7 @@ function MoviesCardList({ movie }) {
   }
   
 
-  const visibleCards = movie.slice(0, visibleCardCount).map((card, index) => {
+  const visibleCards = movies.slice(0, visibleCardCount).map((card, index) => {
     const isMovieSaved = saveMovies.some(savedMovie => savedMovie.movieId === card.id);
     
     return (

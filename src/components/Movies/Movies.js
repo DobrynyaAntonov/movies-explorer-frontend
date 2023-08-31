@@ -7,70 +7,17 @@ import * as MovieApi from "../../utils/MoviesApi";
 import Preloader from "./Preloader/Preloader"
 
 function Movies() {
-  const savedSearchQuery = localStorage.getItem('searchQuery') || "";
-  const savedShortFilmsOnly = JSON.parse(localStorage.getItem('shortFilmsOnly'));
-  const [shortFilmsOnly, setShortFilmsOnly] = useState(savedShortFilmsOnly || false);
   const [movies, setMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [shortFilmsOnly, setShortFilmsOnly] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [preloader, setPreloader] = useState(false);
   const [searching, setSearching] = useState(false);
-  const [initialSearchDone, setInitialSearchDone] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(savedSearchQuery);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    if (initialSearchDone) {
-      filterMovies(movies, shortFilmsOnly);
-    }
-  }, [shortFilmsOnly, movies, initialSearchDone]);
-
-  useEffect(() => {
-    if (initialSearchDone) {
-      localStorage.setItem('shortFilmsOnly', JSON.stringify(shortFilmsOnly));
-      filterMovies(movies, shortFilmsOnly);
-    }
-  }, [shortFilmsOnly]);
-
-  useEffect(() => {
-    if (initialSearchDone) {
-      localStorage.setItem('searchQuery', searchQuery);
-      filterMovies(movies, shortFilmsOnly);
-    }
-  }, [searchQuery]);
-
-  useEffect(() => {
-    if (searchQuery && savedSearchQuery === searchQuery) {
-      setInitialSearchDone(true);
-      setSearching(true);
-      // Если уже есть сохраненные фильмы, используем их, иначе делаем запрос
-      if (localStorage.getItem('savedMovies')) {
-        setMovies(JSON.parse(localStorage.getItem('savedMovies')));
-        setPreloader(false);
-        setSearching(false);
-      } else {
-        MovieApi.getMovie()
-          .then((data) => {
-            const lowerCaseInput = searchQuery.toLowerCase();
-
-            const searchResults = data.filter(movie => {
-              const lowerCaseNameRU = movie.nameRU ? movie.nameRU.toLowerCase() : "";
-              const lowerCaseNameEn = movie.nameEn ? movie.nameEn.toLowerCase() : "";
-
-              return lowerCaseNameRU.includes(lowerCaseInput) || lowerCaseNameEn.includes(lowerCaseInput);
-            });
-
-            setMovies(searchResults);
-            localStorage.setItem('savedMovies', JSON.stringify(searchResults));
-            setPreloader(false);
-            setSearching(false);
-          })
-          .catch((error) => {
-            console.log('Ошибка запроса фильмов:', error);
-            setErrorMessage('Произошла ошибка при поиске фильмов');
-            setPreloader(false);
-            setSearching(false);
-          });
-      }
+    const savedShortFilmsOnly = JSON.parse(localStorage.getItem('shortFilmsOnly'));
+    if (savedShortFilmsOnly !== null) {
+      setShortFilmsOnly(savedShortFilmsOnly);
     }
   }, []);
 
@@ -78,30 +25,49 @@ function Movies() {
     setShortFilmsOnly(!shortFilmsOnly);
   };
 
-  const handleSearch = (inputDate) => {
-    if (!inputDate) {
+  const handleSearch = (inputQuery) => {
+    if (!inputQuery) {
       setErrorMessage('Поле поиска пустое');
       setMovies([]);
-      setFilteredMovies([]); // Сброс результатов поиска
-      setSearchQuery("");
-      setSearching(false);
       return;
     }
 
     setPreloader(true);
-    setMovies([]);
-    setFilteredMovies([]); // Сброс результатов поиска
-    setSearchQuery(inputDate);
+    setSearchQuery(inputQuery);
     setSearching(true);
     setErrorMessage('');
+
+    MovieApi.getMovie()
+      .then((data) => {
+        const lowerCaseInput = inputQuery.toLowerCase();
+        const searchResults = data.filter(movie => {
+          const lowerCaseNameRU = movie.nameRU ? movie.nameRU.toLowerCase() : "";
+          const lowerCaseNameEn = movie.nameEn ? movie.nameEn.toLowerCase() : "";
+          return lowerCaseNameRU.includes(lowerCaseInput) || lowerCaseNameEn.includes(lowerCaseInput);
+        });
+        setMovies(searchResults);
+        setPreloader(false);
+        setSearching(false);
+
+        if (searchResults.length === 0) {
+          console.log('Ничего не найдено');
+          setErrorMessage('Ничего не найдено');
+        }
+      })
+      .catch((error) => {
+        console.log('Ошибка запроса фильмов:', error);
+        setErrorMessage('Произошла ошибка при поиске фильмов');
+        setPreloader(false);
+        setSearching(false);
+      });
   }
 
-  const filterMovies = (movies, shortFilms) => {
-    if (shortFilms) {
-      const filteredMovies = movies.filter(movie => movie.duration <= 40);
-      setFilteredMovies(filteredMovies);
+  const filterMovies = () => {
+    if (shortFilmsOnly) {
+      const filteredMovies = movies.filter(movie => movie.duration <= 60);
+      return filteredMovies;
     } else {
-      setFilteredMovies(movies);
+      return movies;
     }
   }
 
@@ -114,7 +80,8 @@ function Movies() {
       />
       {errorMessage && !searching && <p className="error">{errorMessage}</p>}
       {preloader && <Preloader />}
-      {filteredMovies.length > 0 && !preloader && <MoviesCardList movie={filteredMovies} />}
+      {movies.length === 0 && !preloader && !searching && <p className="error">Ничего не найдено</p>}
+      {movies.length > 0 && <MoviesCardList movies={filterMovies()} />}
     </>
   )
 }
