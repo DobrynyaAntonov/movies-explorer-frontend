@@ -1,0 +1,217 @@
+.aboutProject {
+    margin: 115px 70px 103px;
+}
+
+.aboutProject__title {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    margin: 0;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    padding-bottom: 23px;
+}
+
+.aboutProject__text-container {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 53px;
+}
+
+.aboutProject__text-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.aboutProject__text {
+    margin-top: 30px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.aboutProject__text-column {
+    max-width: 550px;
+}
+
+.aboutProject__time-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    text-align: center;
+    grid-template-rows: 36px 36px;
+    margin-top: 95px;
+    font-size: 14px;
+}
+
+.aboutProject__1week {
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(61, 220, 132, 1);
+    margin: 0;
+    padding-top: 10px;
+    min-width: 95px;
+}
+
+.aboutProject__4week {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(48, 48, 48, 1);
+    margin: 0;
+    padding-top: 10px;
+}
+
+.aboutProject__stack {
+    color: rgba(139, 139, 139, 1);
+}
+
+@media (max-width: 768px) {
+    .aboutProject {
+        margin: 94px 50px 87px;
+    }
+
+    .aboutProject__1week {
+        min-width: 140px;
+    }
+
+    .aboutProject__text {
+        margin-top: 21px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutProject__text-column:first-child {
+        margin-right: 35px;
+    }
+
+    .aboutProject__time-container {
+        margin-top: 81px;
+    }
+
+    .aboutProject__text-title {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.8px;
+        margin-top: 18px;
+    }
+
+}
+
+@media (max-width: 767px) and (min-width: 320px) {
+    .aboutProject__time-container {
+        margin-top: 62px;
+        grid-template-columns: 2.2fr 4fr;
+        font-size: 11px;
+    }
+    .aboutProject__1week {
+        min-width: 100px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 450px) {
+    .aboutProject {
+        margin: 67px 18px 87px;
+    }
+
+    .aboutProject__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 27px;
+    }
+
+    .aboutProject__text-column:first-child {
+        margin-right: 0;
+    }
+
+    .aboutProject__text {
+        color: #FFF;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        margin-top: 14px;
+    }
+
+    .aboutProject__text-container {
+        display: block;
+        margin-top: 63px;
+    }
+
+    .aboutProject__text-title {
+        color: #FFF;
+      font-family: 'Inter', Arial, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.72px;
+        margin-bottom: 0px;
+    }
+
+    .aboutProject__text-column:last-child {
+        margin-top: 58px;
+    }
+
+}
+
+@media (max-width: 320px) {
+    .aboutProject {
+        margin: 67px 18px 87px;
+    }
+
+    .aboutProject__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 27px;
+    }
+
+    .aboutProject__text-column:first-child {
+        margin-right: 0;
+    }
+
+    .aboutProject__text {
+        color: #FFF;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        margin-top: 14px;
+    }
+
+    .aboutProject__text-container {
+        display: block;
+        margin-top: 63px;
+    }
+
+    .aboutProject__text-title {
+        color: #FFF;
+      font-family: 'Inter', Arial, sans-serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: -0.72px;
+        margin-bottom: 0px;
+    }
+
+    .aboutProject__text-column:last-child {
+        margin-top: 58px;
+    }
+
+    .aboutProject__time-container {
+        margin-top: 62px;
+        grid-template-columns: 2.2fr 4fr;
+        font-size: 11px;
+    }
+    .aboutProject__1week {
+        min-width: 100px;
+    }
+
+}

@@ -1,0 +1,15 @@
+.savedMovies {
+    margin-bottom: 242px;
+}
+
+@media(max-width:768px) {
+    .savedMovies {
+        margin-bottom: 180px;
+    }
+}
+
+@media(max-width:320px) {
+    .savedMovies {
+        margin-bottom: 80px;
+    }
+}

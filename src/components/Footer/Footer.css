@@ -1,0 +1,113 @@
+.footer {
+    margin: 0 68px 17px;
+    padding-top: 79px;
+}
+
+.footer__text {
+    text-align: center;
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(139, 139, 139, 1);
+    border-bottom: 1px solid rgba(66, 66, 66, 1);
+    padding-bottom: 20px;
+}
+
+.footer__container {
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer__copyright {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.footer__links-container{
+    list-style: none;
+    padding: 0; 
+    display: flex;
+    margin-top: 3px;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+}
+.footer__anchor-link{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+.footer__link:hover {
+    opacity: 0.5;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer__link:first-child {
+    margin-right: 25px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        margin: 45px 30px 17px;
+        padding-top: 76px;
+    }
+
+    .footer__link:first-child {
+        margin-right: 21px;
+    }
+}
+
+@media (max-width: 320px) {
+    .footer {
+        margin: 0 15px 17px;
+        padding-top: 151px;
+    }
+
+    .footer__text {
+        font-size: 12px;
+        line-height: normal;
+        width: 100%;
+    }
+
+    .footer__link {
+        font-size: 12px;
+        line-height: normal;
+        margin-top: 10px;
+    }
+
+    .footer__link:first-child {
+        margin-right: 0px;
+    }
+
+    .footer__container {
+        flex-direction: column-reverse;
+        align-items: center;
+
+    }
+
+    .footer__links-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer__copyright {
+        font-size: 12px;
+        line-height: normal;
+        margin-top: 33px;
+    }
+}
