@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import { Route, Routes } from 'react-router-dom';
 import CurrentUserContext from "../../context/CurrentUserContext";
@@ -14,13 +14,11 @@ import NotFound from "../NotFound/NotFound";
 import * as MainApi from "../../utils/MainApi";
 import { ProtectedRoute } from "../ProtectedRout/ProtectedRoute";
 
-
-
-
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = () => {
         setLoggedIn(true);
@@ -46,15 +44,13 @@ function App() {
             });
     }
 
-
-
     const checkToken = () => {
         MainApi.checkToken()
             .then((data) => {
                 if (data) {
                     setLoggedIn(true)
                     const lastRoute = localStorage.getItem('lastRoute');
-                    navigate(lastRoute)
+                    navigate(lastRoute || '/');
                     setCurrentUser(data);
                 } else {
                     setLoggedIn(false)
@@ -63,13 +59,29 @@ function App() {
             .catch((err) => {
                 setLoggedIn(false);
                 console.log(err);
-            })
-
+            });
     }
-    useEffect(() => {
-        checkToken();
-    }, []);
 
+    useEffect(() => {
+        localStorage.setItem('lastRoute', location.pathname);
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const lastRoute = localStorage.getItem('lastRoute');
+        if (!loggedIn) {
+            if (lastRoute) {
+                navigate(lastRoute);
+            } else {
+                navigate('/');
+            }
+        } else {
+            if (location.pathname === '/signin' || location.pathname === '/signup') {
+                navigate('/');
+            }
+        }
+
+        checkToken();
+    }, [loggedIn, location.pathname]);
 
     return (
         <>
@@ -113,20 +125,17 @@ function App() {
                         </>
                     } />
 
-
                     <Route path='/signin' element={<>
                         <Login onLogin={handleLogin} />
                     </>} />
 
-
                     <Route path='/signup' element={<>
                         <Register onLogin={handleLogin} />
                     </>} />
+
                     <Route path="/*" element={<NotFound />} />
 
                 </Routes>
-
-
             </CurrentUserContext.Provider>
         </>
     )

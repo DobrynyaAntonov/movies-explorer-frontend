@@ -14,6 +14,7 @@ function Movies() {
   const [searching, setSearching] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Загрузка состояния чекбокса из localStorage при монтировании компонента
   useEffect(() => {
     const savedShortFilmsOnly = JSON.parse(localStorage.getItem('shortFilmsOnly'));
     if (savedShortFilmsOnly !== null) {
@@ -21,8 +22,10 @@ function Movies() {
     }
   }, []);
 
+  // Обработчик изменения чекбокса
   const handleCheckboxChange = () => {
     setShortFilmsOnly(!shortFilmsOnly);
+    localStorage.setItem('shortFilmsOnly', JSON.stringify(!shortFilmsOnly));
   };
 
   const handleSearch = (inputQuery) => {
@@ -62,14 +65,10 @@ function Movies() {
       });
   }
 
-  const filterMovies = () => {
-    if (shortFilmsOnly) {
-      const filteredMovies = movies.filter(movie => movie.duration <= 60);
-      return filteredMovies;
-    } else {
-      return movies;
-    }
-  }
+  // Фильтрация фильмов на основе shortFilmsOnly
+  const filteredMovies = shortFilmsOnly
+    ? movies.filter(movie => movie.duration <= 60)
+    : movies;
 
   return (
     <>
@@ -80,8 +79,8 @@ function Movies() {
       />
       {errorMessage && !searching && <p className="error">{errorMessage}</p>}
       {preloader && <Preloader />}
-      {movies.length === 0 && !preloader && !searching && <p className="error">Ничего не найдено</p>}
-      {movies.length > 0 && <MoviesCardList movies={filterMovies()} />}
+      {filteredMovies.length === 0 && !preloader && !searching && <p className="error"></p>}
+      {filteredMovies.length > 0 && <MoviesCardList movies={filteredMovies} />}
     </>
   )
 }

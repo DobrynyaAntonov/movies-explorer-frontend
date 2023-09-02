@@ -9,13 +9,15 @@ function Login({ onLogin, name }) {
     const navigate = useNavigate();
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
-
     const [resErr, setResErr] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (isValid) {
+        if (isValid && !isSubmitting) {
+            setIsSubmitting(true);
+
             const { email, password } = values;
             MainApi.login({ email, password })
                 .then(() => {
@@ -32,6 +34,7 @@ function Login({ onLogin, name }) {
                     } else {
                         setResErr('При авторизации произошла ошибка. Токен не передан или передан не в том формате.');
                     }
+                    setIsSubmitting(false);
                     console.log('Ошибка авторизации:', error);
                 });
         }
@@ -56,6 +59,7 @@ function Login({ onLogin, name }) {
                         onChange={handleChange}
                         required
                         placeholder="Введите ваш e-mail"
+                        disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.email}</p>
                     <p className="login__password-form">Пароль</p>
@@ -69,10 +73,13 @@ function Login({ onLogin, name }) {
                         maxLength="20"
                         required
                         placeholder="Введите пароль от 6 до 20 символов"
+                        disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.password}</p>
                     <p className="error-message">{resErr}</p>
-                    <button className={`login__submit-form ${!isValid ? 'disabled' : ''}`} type="submit" disabled={!isValid}>Войти</button>
+                    <button className={`login__submit-form ${!isValid || isSubmitting ? 'disabled' : ''}`} type="submit" disabled={!isValid || isSubmitting}>
+                        {isSubmitting ? 'Вход...' : 'Войти'}
+                    </button>
                 </form>
                 <div className="login__regist">
                     <p className="login__text-regist">Ещё не зарегистрированы?</p>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import './FilterCheckbox.css';
+import '../../Movies/FilterCheckbox/FilterCheckbox.css';
 
-function FilterCheckbox({ onChange }) {
+function FilterCheckboxSave({ onChange }) {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    const savedState = localStorage.getItem("checkboxState");
+    const savedState = localStorage.getItem("checkboxStateSave");
     if (savedState !== null) {
       setIsChecked(JSON.parse(savedState));
     }
@@ -14,7 +14,7 @@ function FilterCheckbox({ onChange }) {
   const handleCheckboxChange = () => {
     const updatedChecked = !isChecked;
     setIsChecked(updatedChecked);
-    localStorage.setItem("checkboxState", JSON.stringify(updatedChecked));
+    localStorage.setItem("checkboxStateSave", JSON.stringify(updatedChecked));
     onChange(updatedChecked);
   };
 
@@ -34,4 +34,4 @@ function FilterCheckbox({ onChange }) {
   );
 };
 
-export default FilterCheckbox;
+export default FilterCheckboxSave;

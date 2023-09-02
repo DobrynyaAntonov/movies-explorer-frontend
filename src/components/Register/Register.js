@@ -1,53 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import './Register.css';
 import img from '../../images/logo.svg'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as MainApi from "../../utils/MainApi";
 import { useFormWithValidation } from "../Validation/ValidationForm";
 
 function Register({ onLogin }) {
     const navigate = useNavigate();
-
     const { values, handleChange, errors, isValid } = useFormWithValidation();
+    const [resErr, setResErr] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const [resErr, setResErr] = React.useState('');
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (isValid) {
-            const { email, password, name } = values;
-            MainApi.register({ name, email, password })
-                .then(() => {
-                    console.log('Успешная регистрация');
-                    setResErr('');
-                    MainApi.login({ email, password })
-                        .then(() => {
-                            console.log('Успешный вход');
-                            setResErr('');
-                            onLogin();
-                            navigate('/movies')
-                        })
-                        .catch((error) => {
-                            if (error.includes('400')) {
-                                setResErr('Вы ввели неправильный логин или пароль.');
-                            } else if (error.name === 'JsonWebTokenError') {
-                                setResErr('При авторизации произошла ошибка. Переданный токен некорректен.');
-                            } else {
-                                setResErr('При авторизации произошла ошибка. Токен не передан или передан не в том формате.');
-                            }
-                            console.log('Ошибка авторизации:', error);
-                        });
-                })
-                .catch((error) => {
-                    if (error.includes('409')) {
-                        setResErr('Пользователь с таким email уже существует.');
-                    } else {
-                        setResErr('При регистрации пользователя произошла ошибка.');
-                    }
-                    console.log('Ошибка регистрации:', error);
-                });
+        if (isValid && !isSubmitting) {
+            setIsSubmitting(true);
+
+            try {
+                const { email, password, name } = values;
+                await MainApi.register({ name, email, password });
+                await MainApi.login({ email, password });
+                onLogin();
+                navigate('/movies');
+            } catch (error) {
+                if (error.message.includes('409')) {
+                    setResErr('Пользователь с таким email уже существует.');
+                } else {
+                    setResErr('При регистрации пользователя произошла ошибка.');
+                }
+                console.error('Ошибка регистрации/авторизации:', error);
+            } finally {
+                setIsSubmitting(false);
+            }
         }
     }
 
@@ -70,6 +55,7 @@ function Register({ onLogin }) {
                         onChange={handleChange}
                         required
                         placeholder="Введите ваше имя"
+                        disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.name}</p>
                     <p className="register__email">E-mail</p>
@@ -81,6 +67,7 @@ function Register({ onLogin }) {
                         onChange={handleChange}
                         required
                         placeholder="Введите ваш e-mail"
+                        disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.email}</p>
                     <p className="register__pass">Пароль</p>
@@ -94,10 +81,13 @@ function Register({ onLogin }) {
                         maxLength="20"
                         required
                         placeholder="Введите пароль от 6 до 20 символов"
+                        disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.password}</p>
                     <p className="error-message">{resErr}</p>
-                    <button className={`register__submit ${!isValid ? 'disabled' : ''}`} type="submit" disabled={!isValid}>Зарегистрироваться</button>
+                    <button className={`register__submit ${!isValid || isSubmitting ? 'disabled' : ''}`} type="submit" disabled={!isValid || isSubmitting}>
+                        {isSubmitting ? 'Регистрация...' : 'Зарегистрироваться'}
+                    </button>
                 </form>
                 <div className="register__container-regist">
                     <p className="register__text-regist">Уже зарегистрированы?</p>
