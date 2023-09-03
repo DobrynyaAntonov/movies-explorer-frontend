@@ -11,29 +11,34 @@ function Register({ onLogin }) {
     const [resErr, setResErr] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (isValid && !isSubmitting) {
-            setIsSubmitting(true);
+        if (!isValid || isSubmitting) {
+            return;
+        }
 
-            try {
-                const { email, password, name } = values;
-                await MainApi.register({ name, email, password });
-                await MainApi.login({ email, password });
+        setIsSubmitting(true);
+
+        const { email, password, name } = values;
+
+        MainApi.register({ name, email, password })
+            .then(() => {
                 onLogin();
                 navigate('/movies');
-            } catch (error) {
-                if (error.message.includes('409')) {
+                MainApi.login({ email, password })
+            })
+            .catch((error) => {
+                if (error.includes('409')) {
                     setResErr('Пользователь с таким email уже существует.');
                 } else {
                     setResErr('При регистрации пользователя произошла ошибка.');
                 }
-                console.error('Ошибка регистрации/авторизации:', error);
-            } finally {
+                console.log('Ошибка регистрации:', error);
+            })
+            .finally(() => {
                 setIsSubmitting(false);
-            }
-        }
+            });
     }
 
     const clickLogo = () => {
@@ -77,10 +82,10 @@ function Register({ onLogin }) {
                         name="password"
                         value={values.password || ''}
                         onChange={handleChange}
-                        minLength="6"
+                        minLength="8"
                         maxLength="20"
                         required
-                        placeholder="Введите пароль от 6 до 20 символов"
+                        placeholder="Введите пароль от 8 до 20 символов"
                         disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.password}</p>

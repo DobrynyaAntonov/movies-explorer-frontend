@@ -69,10 +69,10 @@ function Login({ onLogin, name }) {
                         name="password"
                         value={values.password || ''}
                         onChange={handleChange}
-                        minLength="6"
+                        minLength="8"
                         maxLength="20"
                         required
-                        placeholder="Введите пароль от 6 до 20 символов"
+                        placeholder="Введите пароль от 8 до 20 символов"
                         disabled={isSubmitting}
                     />
                     <p className="error-message">{errors.password}</p>
