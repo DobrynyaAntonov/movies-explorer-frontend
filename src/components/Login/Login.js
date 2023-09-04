@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFormWithValidation } from "../Validation/ValidationForm";
 import * as MainApi from "../../utils/MainApi";
 
-function Login({ onLogin, name }) {
+function Login({ onLogin }) {
     const navigate = useNavigate();
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();

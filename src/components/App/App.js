@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import CurrentUserContext from "../../context/CurrentUserContext";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -18,7 +18,6 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const navigate = useNavigate();
-    const location = useLocation();
 
     const handleLogin = () => {
         setLoggedIn(true);
@@ -28,11 +27,6 @@ function App() {
         setLoggedIn(false);
     };
 
-    useEffect(() => {
-        if (loggedIn) {
-            updateUser();
-        }
-    }, [loggedIn]);
 
     const updateUser = () => {
         MainApi.checkToken()
@@ -48,10 +42,10 @@ function App() {
         MainApi.checkToken()
             .then((data) => {
                 if (data) {
-                    setLoggedIn(true)
-                    const lastRoute = localStorage.getItem('lastRoute');
-                    navigate(lastRoute || '/');
+                    setLoggedIn(true);
                     setCurrentUser(data);
+                    const lastRoute = localStorage.getItem('lastRoute');
+                    navigate(lastRoute);
                 } else {
                     setLoggedIn(false)
                 }
@@ -62,26 +56,10 @@ function App() {
             });
     }
 
-    useEffect(() => {
-        localStorage.setItem('lastRoute', location.pathname);
-    }, [location.pathname]);
 
     useEffect(() => {
-        const lastRoute = localStorage.getItem('lastRoute');
-        if (!loggedIn) {
-            if (lastRoute) {
-                navigate(lastRoute);
-            } else {
-                navigate('/');
-            }
-        } else {
-            if (location.pathname === '/signin' || location.pathname === '/signup') {
-                navigate('/');
-            }
-        }
-
         checkToken();
-    }, [loggedIn, location.pathname]);
+    }, []);
 
     return (
         <>
@@ -98,7 +76,8 @@ function App() {
                             <Header loggedIn={loggedIn} />
                             <ProtectedRoute
                                 loggedIn={loggedIn}
-                                element={Movies} />
+                                element={Movies}
+                                onExit={handleExit} />
                             <Footer />
                         </>
                     } />
@@ -108,7 +87,8 @@ function App() {
                             <Header loggedIn={loggedIn} />
                             <ProtectedRoute
                                 loggedIn={loggedIn}
-                                element={SavedMovies} />
+                                element={SavedMovies}
+                                onExit={handleExit} />
                             <Footer />
                         </>
                     }
@@ -125,13 +105,13 @@ function App() {
                         </>
                     } />
 
-                    <Route path='/signin' element={<>
-                        <Login onLogin={handleLogin} />
-                    </>} />
+                    <Route path='/signin' element={
+                        loggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />
+                    } />
 
-                    <Route path='/signup' element={<>
-                        <Register onLogin={handleLogin} />
-                    </>} />
+                    <Route path='/signup' element={
+                        loggedIn ? <Navigate to="/" /> : <Register onLogin={handleLogin} />
+                    } />
 
                     <Route path="/*" element={<NotFound />} />
 
