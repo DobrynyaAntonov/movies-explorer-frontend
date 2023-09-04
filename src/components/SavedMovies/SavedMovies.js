@@ -7,12 +7,9 @@ import MovieCard from "../Movies/MoviesCardList/MovieCard/MoviesCard";
 import * as MainApi from "../../utils/MainApi";
 
 function SavedMovies() {
-  const savedShortFilmsOnly = JSON.parse(localStorage.getItem('savedShortFilmsOnly'));
-  const savedSearchInput = localStorage.getItem('savedSearchInput') || '';
-  const [shortFilmsOnly, setShortFilmsOnly] = useState(savedShortFilmsOnly || false);
-  const [searchInput, setSearchInput] = useState(savedSearchInput);
+  const [shortFilmsOnly, setShortFilmsOnly] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
   const [saveMovies, setSaveMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -20,40 +17,28 @@ function SavedMovies() {
     setShortFilmsOnly(!shortFilmsOnly);
   };
 
-  useEffect(() => {
-    const filtered = shortFilmsOnly
+  const filtered = shortFilmsOnly
       ? saveMovies.filter(movie => movie.duration <= 60)
       : saveMovies;
 
-    setFilteredMovies(filtered);
-    localStorage.setItem('savedShortFilmsOnly', JSON.stringify(shortFilmsOnly));
-  }, [shortFilmsOnly, saveMovies]);
-
   useEffect(() => {
-    if (savedSearchInput) {
-      handleSearch(savedSearchInput);
-    } else {
-      setLoading(true); 
-      getMovies();
-    }
-  }, [savedSearchInput]);
+    getMovies();
+  }, []);
 
   const getMovies = () => {
+    setLoading(true);
     MainApi.getMovies()
       .then((data) => {
-        setLoading(false); 
+        setLoading(false);
         if (data.length === 0) {
           setErrorMessage('Сохраненных фильмов пока нет');
         } else {
           setErrorMessage('');
         }
         setSaveMovies(data);
-
-        // Сохраняем данные в localStorage
-        localStorage.setItem('savedMovies', JSON.stringify(data));
       })
       .catch((error) => {
-        setLoading(false); 
+        setLoading(false);
         console.log('Ошибка запроса фильмов:', error);
         setErrorMessage('Произошла ошибка при загрузке фильмов');
       });
@@ -61,12 +46,10 @@ function SavedMovies() {
 
   const handleSearch = (inputDate) => {
     setSearchInput(inputDate);
-    localStorage.setItem('savedSearchInput', inputDate);
 
     if (!inputDate) {
       setLoading(true);
       getMovies();
-      setFilteredMovies(saveMovies);
       setErrorMessage('');
       return;
     }
@@ -83,7 +66,7 @@ function SavedMovies() {
       setErrorMessage('Ничего не найдено');
     } else {
       setErrorMessage('');
-      setFilteredMovies(searchResults);
+      setSaveMovies(searchResults);
     }
   }
 
@@ -92,15 +75,16 @@ function SavedMovies() {
     MainApi.deleteMovie(id)
       .then(() => {
         console.log('Карточка успешно удалена');
-        getMovies();
+        setSaveMovies((prevMovies) => prevMovies.filter((movie) => movie._id !== id));
       })
       .catch((error) => {
         console.log('При удалении фильма произошла ошибка:', error);
         setLoading(false);
       });
   }
+  
 
-  const savedMoviesCards = filteredMovies.map((card) => (
+  const savedMoviesCards = filtered.map((card) => (
     <li key={card.movieId} className="moviesCardList__item">
       <MovieCard
         name={card.nameRU}

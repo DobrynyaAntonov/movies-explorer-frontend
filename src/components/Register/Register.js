@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as MainApi from "../../utils/MainApi";
 import { useFormWithValidation } from "../Validation/ValidationForm";
 
-function Register({ onLogin }) {
+function Register({ onLogin, update }) {
     const navigate = useNavigate();
     const { values, handleChange, errors, isValid } = useFormWithValidation();
     const [resErr, setResErr] = useState('');
@@ -27,6 +27,9 @@ function Register({ onLogin }) {
                 onLogin();
                 navigate('/movies');
                 MainApi.login({ email, password })
+                .then(()=>{
+                    update();
+                })
             })
             .catch((error) => {
                 if (error.includes('409')) {

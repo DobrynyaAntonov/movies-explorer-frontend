@@ -52,7 +52,7 @@ function Profile({ onExit, update }) {
                     setResErr('');
                 })
                 .catch((error) => {
-                    if (error.message.includes('409')) {
+                    if (error.includes('409')) {
                         setResErr('Пользователь с таким email уже существует.');
                     } else {
                         setResErr('При обновлении профиля произошла ошибка.');

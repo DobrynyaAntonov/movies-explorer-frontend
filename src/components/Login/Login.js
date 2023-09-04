@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFormWithValidation } from "../Validation/ValidationForm";
 import * as MainApi from "../../utils/MainApi";
 
-function Login({ onLogin }) {
+function Login({ onLogin, update }) {
     const navigate = useNavigate();
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
@@ -25,6 +25,7 @@ function Login({ onLogin }) {
                     setResErr('');
                     onLogin();
                     navigate('/movies')
+                    update();
                 })
                 .catch((error) => {
                     if (error.includes('400')) {

@@ -106,14 +106,18 @@ function App() {
                     } />
 
                     <Route path='/signin' element={
-                        loggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />
+                        loggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} update={updateUser} />
                     } />
 
                     <Route path='/signup' element={
-                        loggedIn ? <Navigate to="/" /> : <Register onLogin={handleLogin} />
+                        loggedIn ? <Navigate to="/" /> : <Register onLogin={handleLogin} update={updateUser} />
                     } />
 
-                    <Route path="/*" element={<NotFound />} />
+                    {loggedIn ? (
+                        <Route path="/*" element={<Navigate to='/' />} />
+                    ) : (
+                        <Route path="/*" element={<NotFound />} />
+                    )}
 
                 </Routes>
             </CurrentUserContext.Provider>
