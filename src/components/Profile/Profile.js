@@ -43,10 +43,10 @@ function Profile({ onExit, update }) {
             }
 
             MainApi.setUser({ email, name })
-                .then(() => {
+                .then((data) => {
                     console.log('успешное обновление данных');
                     setResSuc('Данные профиля успешно обновлены');
-                    update();
+                    update(data);
                     setIsEditing(false);
                     setIsSubmitting(false);
                     setResErr('');

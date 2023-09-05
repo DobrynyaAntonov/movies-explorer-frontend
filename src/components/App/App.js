@@ -27,6 +27,10 @@ function App() {
         setLoggedIn(false);
     };
 
+    const updateUserInfo = (data) => {
+        setCurrentUser(data);
+    };
+
 
     const updateUser = () => {
         MainApi.checkToken()
@@ -101,7 +105,7 @@ function App() {
                                 loggedIn={loggedIn}
                                 element={Profile}
                                 onExit={handleExit}
-                                update={updateUser} />
+                                update={updateUserInfo} />
                         </>
                     } />
 
