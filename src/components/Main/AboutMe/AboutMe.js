@@ -1,6 +1,6 @@
 import React from "react";
 import './AboutMe.css';
-import image from '../../../images/pic__COLOR_pic.png'
+import image from '../../../images/photo1694263423.jpeg'
 import icon from '../../../images/text__COLOR_font-main.svg'
 
 function AboutMe() {
@@ -14,10 +14,10 @@ function AboutMe() {
             </h2>
             <div className="aboutMe__container">
                 <div className="aboutMe__history">
-                    <h3 className="aboutMe__name">Виталий</h3>
-                    <p className="aboutMe__prof">Фронтенд-разработчик, 30 лет</p>
-                    <p className="aboutMe__life">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
-                        и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.</p>
+                    <h3 className="aboutMe__name">Добрыня</h3>
+                    <p className="aboutMe__prof">Фронтенд-разработчик, 22 года</p>
+                    <p className="aboutMe__life">Я родился в Краснодаре. В 15 лет переехал в Москву учиться музыкальной профессии. В данный момент играю в двух группах - это мое основное хобби.
+                      Увлекаюсь легкой атлетикой и люблю слушать и писать музыку. Год назад начал кодить, меня это настолько увлекло, что я не заметил как пролетела учеба в Яндекс Практикуме. В настоящее время активно занимаюсь програмированием и выполняю фриланс заказы с другом.</p>
                     <a className="aboutMe__git" href="https://github.com/DobrynyaAntonov" target="_blank" rel="noreferrer" >Github</a>
                 </div>
                 <img className="aboutMe__image"
