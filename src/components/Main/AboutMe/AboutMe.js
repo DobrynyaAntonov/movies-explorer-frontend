@@ -27,11 +27,11 @@ function AboutMe() {
             <h3 className="aboutMe__portfolio">Портфолио</h3>
             <ul className="aboutMe__site">
                 <li className="aboutMe__link">
-                    <a className="aboutMe__anchor" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Статичный сайт</a>
+                    <a className="aboutMe__anchor" href="https://dobrynyaantonov.github.io/how-to-learn/" target="_blank" rel="noreferrer">Статичный сайт</a>
                     <img className="aboutMe__icon" src={icon} alt="переход на сайт" />
                 </li>
                 <li className="aboutMe__link">
-                    <a className="aboutMe__anchor" href="https://mesto.dobrynya.nomoredomains.work/signin" target="_blank" rel="noreferrer">Адаптивный сайт</a>
+                    <a className="aboutMe__anchor" href="https://dobrynyaantonov.github.io/russian-travel/#" target="_blank" rel="noreferrer">Адаптивный сайт</a>
                     <img className="aboutMe__icon" src={icon} alt="переход на сайт" />
                 </li>
                 <li className="aboutMe__link">
