@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import CurrentUserContext from "../../context/CurrentUserContext";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Movies from "../Movies/Movies";
@@ -9,55 +11,120 @@ import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
-
-
-
-
+import * as MainApi from "../../utils/MainApi";
+import { ProtectedRoute } from "../ProtectedRout/ProtectedRoute";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(true)
-    const [savedMovies, setSavedMovies] = useState(true)
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
+    const navigate = useNavigate();
 
+    const handleLogin = () => {
+        setLoggedIn(true);
+    };
+
+    const handleExit = () => {
+        setLoggedIn(false);
+    };
+
+    const updateUserInfo = (data) => {
+        setCurrentUser(data);
+    };
+
+
+    const updateUser = () => {
+        MainApi.checkToken()
+            .then((userInfo) => {
+                setCurrentUser(userInfo);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    const checkToken = () => {
+        MainApi.checkToken()
+            .then((data) => {
+                if (data) {
+                    setLoggedIn(true);
+                    setCurrentUser(data);
+                    const lastRoute = localStorage.getItem('lastRoute');
+                    navigate(lastRoute);
+                } else {
+                    setLoggedIn(false)
+                }
+            })
+            .catch((err) => {
+                setLoggedIn(false);
+                console.log(err);
+            });
+    }
+
+
+    useEffect(() => {
+        checkToken();
+    }, []);
 
     return (
         <>
-            <Routes>
-                <Route path='/' element={<>
-                    <Header loggedIn={loggedIn} />
-                    <Main />
-                    <Footer />
-                </>} />
-                <Route path='/movies' element={<>
-                    <Header loggedIn={loggedIn} />
-                    <Movies save={savedMovies}/>
-                    <Footer />
-                </>} />
+            <CurrentUserContext.Provider value={currentUser}>
+                <Routes>
+                    <Route path='/' element={<>
+                        <Header loggedIn={loggedIn} />
+                        <Main />
+                        <Footer />
+                    </>} />
 
-                <Route path='/saved-movies' element={<>
-                    <Header loggedIn={loggedIn} />
-                    <SavedMovies/>
-                    <Footer />
-                </>} />
+                    <Route path='/movies' element={
+                        <>
+                            <Header loggedIn={loggedIn} />
+                            <ProtectedRoute
+                                loggedIn={loggedIn}
+                                element={Movies}
+                                onExit={handleExit} />
+                            <Footer />
+                        </>
+                    } />
 
-                <Route path='/profile' element={<>
-                    <Header loggedIn={loggedIn} />
-                    <Profile/>
-                </>} />
+                    <Route path='/saved-movies' element={
+                        <>
+                            <Header loggedIn={loggedIn} />
+                            <ProtectedRoute
+                                loggedIn={loggedIn}
+                                element={SavedMovies}
+                                onExit={handleExit} />
+                            <Footer />
+                        </>
+                    }
+                    />
 
-                <Route path='/signin' element={<>
-                    <Login  />
-                </>} />
+                    <Route path='/profile' element={
+                        <>
+                            <Header loggedIn={loggedIn} />
+                            <ProtectedRoute
+                                loggedIn={loggedIn}
+                                element={Profile}
+                                onExit={handleExit}
+                                update={updateUserInfo} />
+                        </>
+                    } />
 
-                
-                <Route path='/signup' element={<>
-                    <Register  />
-                </>} />
-                <Route path="/*" element={<NotFound/>}/>
+                    <Route path='/signin' element={
+                        loggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} update={updateUser} />
+                    } />
 
-            </Routes>
+                    <Route path='/signup' element={
+                        loggedIn ? <Navigate to="/" /> : <Register onLogin={handleLogin} update={updateUser} />
+                    } />
 
+                    {loggedIn ? (
+                        <Route path="/*" element={<Navigate to='/' />} />
+                    ) : (
+                        <Route path="/*" element={<NotFound />} />
+                    )}
 
-
+                </Routes>
+            </CurrentUserContext.Provider>
         </>
     )
 }

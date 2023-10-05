@@ -3,6 +3,25 @@
 
 }
 
+.register__submit.disabled {
+    background-color: rgba(248, 248, 248, 1);
+    cursor: pointer;
+    color: #C2C2C2;
+}
+.register__submit.disabled:hover {
+  opacity: 1;
+}
+
+.error-message {
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 12px;
+}
+
 .register__container {
     margin: 65px auto 0;
     width: 396px;
@@ -25,7 +44,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 20px 0 0;
+    margin: 6px 0 0;
 }
 
 .register__name {
@@ -69,7 +88,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin: 20px 0 0;
+    margin: 6px 0 0;
 }
 
 .register__input-password {

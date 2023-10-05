@@ -1,0 +1,13 @@
+.error {
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 12px;
+    flex-basis: 100%;
+    margin: 0;
+    margin-top: 10px;
+    text-align: center;
+}

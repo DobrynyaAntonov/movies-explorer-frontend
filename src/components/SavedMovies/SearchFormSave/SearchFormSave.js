@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import './SearchForm.css';
+import React, { useState } from "react";
+import '../../Movies/SearchForm/SearchForm.css';
 
 function SearchForm({ handleSearch }) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -12,18 +12,6 @@ function SearchForm({ handleSearch }) {
     const handleInputChange = (event) => {
         setSearchQuery(event.target.value);
     }
-
-    useEffect(() => {
-        const savedQuery = localStorage.getItem("searchQuery");
-        if (savedQuery) {
-            setSearchQuery(savedQuery);
-            handleSearch(savedQuery);
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("searchQuery", searchQuery);
-    }, [searchQuery]);
 
     return (
         <form className="searchForm" onSubmit={handleSubmit}>

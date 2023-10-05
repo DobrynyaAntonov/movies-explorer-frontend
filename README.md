@@ -17,3 +17,7 @@
 
  #чтобы проверить авторизованного и не авторизованного пользователя в файле App.js нужно изменить loggedIn на useState(true) или (false).
 
+ ссылка на пул реквест: https://github.com/DobrynyaAntonov/movies-explorer-frontend/pull/2
+
+ ссылка на проект: https://diplom.dobrynya.nomoreparties.co/movies
+

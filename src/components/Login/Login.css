@@ -3,6 +3,24 @@
 
 }
 
+.login__submit-form.disabled {
+    background-color: rgba(248, 248, 248, 1);
+    cursor: pointer;
+    color: #C2C2C2;
+}
+
+.error-message {
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 12px;
+    text-align: left;
+}
+
+
 .login__container {
     margin: 65px auto 0;
     width: 396px;

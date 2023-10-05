@@ -3,10 +3,66 @@
     margin-top: 89px;
 }
 
+.profile__submit {
+    width: 100%;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    background: #4285F4;
+    border: none;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 85px 0 0;
+    cursor: pointer;
+    max-width: 360px;
+    width: 32%;
+}
+
+.profile__submit.disabled {
+    background-color: rgba(248, 248, 248, 1);
+    cursor: pointer;
+    color: #C2C2C2;
+}
+.profile__submit.disabled:hover {
+  opacity: 1;
+}
+.sucsess-message{
+    color: green;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 12px;
+    flex-basis: 100%;
+    margin: 0;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.error-message {
+    color: #EE3465;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 12px;
+    flex-basis: 100%;
+    margin: 0;
+    margin-top: 10px;
+    text-align: right;
+}
+
 .profile__name {
     color: #FFF;
     text-align: center;
-  font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
@@ -23,15 +79,41 @@
     padding: 0;
     margin: 0;
     color: #FFF;
+    font-size: 11px;
+    text-align: right;
+}
+
+.profile__input-email {
+    width: 141px;
+    height: 14px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: #FFF;
+    font-size: 11px;
+    text-align: right;
 }
 
 .profile__input-name::placeholder {
     color: #FFF;
-  font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 11px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    text-align: right;
+}
+
+.profile__input-email::placeholder {
+    color: #FFF;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: right;
 }
 
 .profile__form {
@@ -45,6 +127,7 @@
     display: flex;
     justify-content: space-between;
     width: 32%;
+    flex-wrap: wrap;
 }
 
 .profile__name-box:first-child {
@@ -64,7 +147,7 @@
 
 }
 
-.profile__submit {
+.profile__submit-open {
     color: #FFF;
     text-align: center;
     font-family: 'Inter', Arial, sans-serif;
@@ -77,6 +160,8 @@
     background: none;
     margin-top: 220px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .profile__submit:hover {
@@ -97,6 +182,8 @@
     line-height: normal;
     margin-top: 16px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .profile__exit:hover {
@@ -120,9 +207,13 @@
     .profile__submit {
         margin-top: 207px;
     }
+
     .profile__name-box {
         display: flex;
         justify-content: space-between;
+        width: 51%;
+    }
+    .profile__submit{
         width: 51%;
     }
 }
@@ -142,10 +233,11 @@
         width: 81%;
     }
 
- 
+
 
     .profile__submit {
         margin: 375px auto 0;
+        width: 81%;
     }
 }
 
@@ -165,9 +257,10 @@
         width: 81%;
     }
 
- 
+
 
     .profile__submit {
         margin: 375px auto 0;
+        width: 81%;
     }
 }

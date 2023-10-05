@@ -1,101 +1,149 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive';
 import './MoviesCardList.css';
-import MovieCard from './MovieCard/MoviesCard'
-import imge1 from '../../../images/pic__COLOR_pic1.png'
-import imge2 from '../../../images/pic__COLOR_pic2.png'
-import imge3 from '../../../images/pic__COLOR_pic3.png'
-import imge4 from '../../../images/pic__COLOR_pic4.png'
-import imge5 from '../../../images/pic__COLOR_pic5.png'
-import imge6 from '../../../images/6.png'
-import imge7 from '../../../images/pic__COLOR_pic7.png'
-import imge8 from '../../../images/pic__COLOR_pic8.png'
-import imge9 from '../../../images/pic__COLOR_pic9.png'
-import imge10 from '../../../images/pic__COLOR_pic10.png'
-import imge11 from '../../../images/pic__COLOR_pic11.png'
-import imge12 from '../../../images/pic__COLOR_pic12.png'
+import MovieCard from './MovieCard/MoviesCard';
+import * as MainApi from "../../../utils/MainApi";
 
-const cardData = [
-  {
-    name: "33 слова о дизайне",
-    img: imge1,
-  },
-  {
-    name: "Киноальманах «100 лет дизайна»",
-    img: imge2,
-    owner: 1,
-  },
-  {
-    name: "В погоне за Бенкси",
-    img: imge3,
-  },
-  {
-    name: "Баския: Взрыв реальности",
-    img: imge4,
-  },
-  {
-    name: "Бег это свобода",
-    img: imge5,
-  },
-  {
-    name: "Книготорговцы",
-    img: imge6,
-    owner: 1,
-  },
-  {
-    name: "Когда я думаю о Германии ночью",
-    img: imge7,
-  },
-  {
-    name: "Gimme Danger: История Игги и The Stooges",
-    img: imge8,
-  },
-  {
-    name: "Дженис: Маленькая девочка грустит",
-    img: imge9,
-  },
-  {
-    name: "Соберись перед прыжком",
-    img: imge10,
-  },
-  {
-    name: "По волнам: Искусство звука в кино",
-    img: imge11,
-  },
-  {
-    name: "Пи Джей Харви: A dog called money",
-    img: imge12,
-  },
-];
 
 function MoviesCardList({ movies }) {
+  const [saveMovies, setSaveMovies] = useState([]);
+  const [likedMovies, setLikedMovies] = useState([]);
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const [visibleCardCount, setVisibleCardCount] = useState(
+    isMobile ? (window.innerWidth <= 320 ? 5 : 8) : 12
+  );
+  const isLoadMoreVisible = visibleCardCount < movies.length;
+  const [likeButtonDisabled, setLikeButtonDisabled] = useState(false);
 
-  const visibleCardCount = isMobile ? (window.innerWidth <= 320 ? 5 : 8) : 12;
+  function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
 
-  const visibleCards = cardData.slice(0, visibleCardCount).map((card, index) => (
-    <li key={index} className="moviesCardList__item">
-      <MovieCard
-        name={card.name}
-        img={card.img}
-      >
-        {card.owner ? (
-          <button className="moviesCard__button-saved"></button>
-        ) : (
-          <button className="moviesCard__button-save">Сохранить</button>
-        )}
-      </MovieCard>
-    </li>
-  ));
+  const getSavedMovies = () => {
+    MainApi.getMovies()
+      .then((data) => {
+        setSaveMovies(data);
+        // Сохраняем данные в localStorage
+        saveToLocalStorage("savedMovies", data);
+      })
+      .catch((error) => {
+        console.log('Ошибка запроса фильмов:', error);
+      });
+  };
+
+  useEffect(() => {
+      getSavedMovies();
+  }, []);
+
+  const handleLoadMore = () => {
+    if (window.innerWidth <= 1279) {
+      setVisibleCardCount(prevCount => prevCount + 2);
+    } else {
+      setVisibleCardCount(prevCount => prevCount + 3);
+    }
+  };
+
+  const handleLikeClick = (movieId) => {
+    const savedMovie = saveMovies.find(movie => movie.movieId === movieId);
+    if (savedMovie) {
+      setLikeButtonDisabled(true); 
+      MainApi.deleteMovie(savedMovie._id)
+        .then(() => {
+          console.log('фильм удален');
+          // Обновляем состояние saveMovies, убирая удаленный фильм
+          setSaveMovies(prevSaveMovies => prevSaveMovies.filter(movie => movie.movieId !== movieId));
+        })
+        .catch((error) => {
+          console.log('ошибка при удалении фильма', error);
+        }) 
+        .finally(() => {
+          setLikeButtonDisabled(false);
+        });
+    } else {
+      setLikedMovies([...likedMovies, movieId]);
+      setLikeButtonDisabled(true);
+      MainApi.addMovie(movieId)
+      .then((newMovieData) => {
+        console.log('фильм успешно сохранен');
+        const cardIndex = saveMovies.findIndex(savedMovie => savedMovie.movieId === movieId);
+        
+        // Если карточка не найдена, добавляем новую карточку в список
+        if (cardIndex === -1) {
+          const updatedSaveMovies = [
+            ...saveMovies,
+            {
+              ...newMovieData,
+            },
+          ];
+          setSaveMovies(updatedSaveMovies);
+        } else {
+          // Если карточка найдена, заменяем ее в списке
+          const updatedSaveMovies = [...saveMovies];
+          updatedSaveMovies[cardIndex] = {
+            ...newMovieData,
+          };
+          setSaveMovies(updatedSaveMovies);
+        }
+      })
+      .catch((error) => {
+        console.log('Ошибка при сохранении фильма:', error);
+      })
+      .finally(() => {
+        setLikeButtonDisabled(false);
+      });
+    
+    }
+  };
+
+  const visibleCards = movies.slice(0, visibleCardCount).map((card) => {
+    const isMovieSaved = saveMovies.some(savedMovie => savedMovie.movieId === card.id);
+
+    return (
+      <li key={card.id} className="moviesCardList__item">
+        <MovieCard
+          name={card.nameRU}
+          img={`https://api.nomoreparties.co/${card.image.url}`}
+          time={card.duration}
+        >
+          {isMovieSaved ? (
+            <button className="moviesCard__button-saved" onClick={() => { handleLikeClick(card.id) }}  disabled={likeButtonDisabled}></button>
+          ) : (
+            <button
+              className='moviesCard__button-save'
+              onClick={() => {
+                const movieData = {
+                  "country": card.country,
+                  "director": card.director,
+                  "duration": card.duration,
+                  "year": card.year,
+                  "description": card.description,
+                  "image": `https://api.nomoreparties.co${card.image.url}`,
+                  "trailerLink": card.trailerLink,
+                  "thumbnail": `https://api.nomoreparties.co/${card.image.formats.thumbnail.hash}`,
+                  "movieId": card.id,
+                  "nameRU": card.nameRU,
+                  "nameEN": card.nameEN,
+                };
+                handleLikeClick(movieData);
+              }}
+              disabled={likeButtonDisabled}
+            >
+              Сохранить
+            </button>
+          )}
+        </MovieCard>
+      </li>
+    );
+  });
 
   return (
     <>
       <ul className="moviesCardList">
         {visibleCards}
       </ul>
-      <button className="more">Ещё</button>
+      {isLoadMoreVisible && <button className="more" onClick={handleLoadMore}>Ещё</button>}
     </>
   );
-};
+}
 
 export default MoviesCardList;
